@@ -1,0 +1,157 @@
+{
+  "category": "art-projects",
+  "projects": [
+    {
+      "id": "5586e34a-6b84-402a-a314-5df072afb4c5",
+      "slug": "van-gogh-inspired-knorr-set",
+      "title": "Van Gogh Inspired Knorr Set",
+      "agency": "Adrian Flowers",
+      "type": "image",
+      "thumbnail": "/images/art-projects/van-gogh-inspired-knorr-set/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 1,
+      "images": [
+        {
+          "url": "/images/art-projects/van-gogh-inspired-knorr-set/detail.jpg",
+          "alt": "Van Gogh Inspired Knorr Set - Main view",
+          "width": 910,
+          "height": 1009
+        }
+      ]
+    },
+    {
+      "id": "708b8a40-40d7-4f59-a16e-93ecae8af5ba",
+      "slug": "lovely-ladies",
+      "title": "Lovely Ladies",
+      "agency": "Patrick Coughlin",
+      "type": "image",
+      "thumbnail": "/images/art-projects/lovely-ladies/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 2,
+      "images": [
+        {
+          "url": "/images/art-projects/lovely-ladies/detail.jpg",
+          "alt": "Lovely Ladies - Main view",
+          "width": 925,
+          "height": 670
+        }
+      ]
+    },
+    {
+      "id": "7e60868a-55cb-449f-b2ee-064894e1d2b5",
+      "slug": "haribo-queen",
+      "title": "Haribo Queen",
+      "agency": "Andrew John Simpson",
+      "type": "image",
+      "thumbnail": "/images/art-projects/haribo-queen/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 3,
+      "images": [
+        {
+          "url": "/images/art-projects/haribo-queen/detail.jpg",
+          "alt": "Haribo Queen - Main view",
+          "width": 781,
+          "height": 601
+        }
+      ]
+    },
+    {
+      "id": "93fbf265-8d5a-4a43-a27a-dbd01e0c7d2a",
+      "slug": "badgers-head",
+      "title": "Badger's Head",
+      "client": "Vertu phones",
+      "type": "image",
+      "thumbnail": "/images/art-projects/badgers-head/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 4,
+      "images": [
+        {
+          "url": "/images/art-projects/badgers-head/detail.jpg",
+          "alt": "Badger's Head - Main view",
+          "width": 893,
+          "height": 638
+        }
+      ]
+    },
+    {
+      "id": "bf7e2f35-0d2b-4afa-81ab-2a272315de61",
+      "slug": "silky-smoking-gun",
+      "title": "Silky Smoking Gun",
+      "agency": "Graham Tooby",
+      "type": "image",
+      "thumbnail": "/images/art-projects/silky-smoking-gun/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 5,
+      "images": [
+        {
+          "url": "/images/art-projects/silky-smoking-gun/detail.jpg",
+          "alt": "Silky Smoking Gun - Main view",
+          "width": 889,
+          "height": 667
+        }
+      ]
+    },
+    {
+      "id": "cadd72e9-d210-4f10-8135-4fb5acf03b99",
+      "slug": "entropy",
+      "title": "Entropy",
+      "agency": "John Shaw",
+      "type": "image",
+      "thumbnail": "/images/art-projects/entropy/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 6,
+      "images": [
+        {
+          "url": "/images/art-projects/entropy/detail.jpg",
+          "alt": "Entropy - Main view",
+          "width": 916,
+          "height": 1010
+        }
+      ]
+    },
+    {
+      "id": "de5e1427-2ed9-4693-91cd-0ca5b54518b0",
+      "slug": "v-and-a-feather-type",
+      "title": "V & A Feather Type",
+      "agency": "Richard Maxted",
+      "type": "image",
+      "thumbnail": "/images/art-projects/v-and-a-feather-type/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 7,
+      "images": [
+        {
+          "url": "/images/art-projects/v-and-a-feather-type/detail.jpg",
+          "alt": "V & A Feather Type - Main view",
+          "width": 896,
+          "height": 646
+        }
+      ]
+    },
+    {
+      "id": "fc726509-80ce-40da-b0b7-ee3414f2ff15",
+      "slug": "olympic-statue",
+      "title": "Olympic Statue",
+      "agency": "Andrew John Simpson",
+      "type": "image",
+      "thumbnail": "/images/art-projects/olympic-statue/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 8,
+      "images": [
+        {
+          "url": "/images/art-projects/olympic-statue/detail.jpg",
+          "alt": "Olympic Statue - Main view",
+          "width": 895,
+          "height": 671
+        }
+      ]
+    }
+  ]
+}

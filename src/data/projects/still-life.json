@@ -1,0 +1,321 @@
+{
+  "category": "still-life",
+  "projects": [
+    {
+      "id": "1192c398-3c1c-41ad-848f-1643085c991f",
+      "slug": "lager-glass-display-case",
+      "title": "Lager Glass Display Case",
+      "client": "Lager",
+      "agency": "Graham Tooby",
+      "type": "image",
+      "thumbnail": "/images/still-life/lager-glass-display-case/thumbnail.jpg",
+      "tags": [],
+      "featured": true,
+      "order": 1,
+      "images": [
+        {
+          "url": "/images/still-life/lager-glass-display-case/detail.jpg",
+          "alt": "Lager Glass Display Case - Main view",
+          "width": 796,
+          "height": 533
+        }
+      ]
+    },
+    {
+      "id": "11a90413-b4bc-4483-8fc9-2a5c74e40941",
+      "slug": "central-park-shopping-mall",
+      "title": "Central Park Shopping Mall",
+      "agency": "Metz & Racine",
+      "type": "image",
+      "thumbnail": "/images/still-life/central-park-shopping-mall/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 2,
+      "images": [
+        {
+          "url": "/images/still-life/central-park-shopping-mall/detail.jpg",
+          "alt": "Central Park Shopping Mall - Main view",
+          "width": 671,
+          "height": 1009
+        }
+      ]
+    },
+    {
+      "id": "13dd8c35-3c86-4147-b30d-103c4e3689ce",
+      "slug": "holsten-pils",
+      "title": "Holsten Pils",
+      "agency": "Giglin & James",
+      "type": "image",
+      "thumbnail": "/images/still-life/holsten-pils/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 3,
+      "images": [
+        {
+          "url": "/images/still-life/holsten-pils/detail.jpg",
+          "alt": "Holsten Pils - Main view",
+          "width": 798,
+          "height": 464
+        }
+      ]
+    },
+    {
+      "id": "1786b311-cdbc-4d7f-a355-0f195bc16a6f",
+      "slug": "nhs-quit-smoking-2",
+      "title": "NHS Quit Smoking 2",
+      "agency": "Wilson Hennessy",
+      "type": "image",
+      "thumbnail": "/images/still-life/nhs-quit-smoking-2/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 4,
+      "images": [
+        {
+          "url": "/images/still-life/nhs-quit-smoking-2/detail.jpg",
+          "alt": "NHS Quit Smoking 2 - Main view",
+          "width": 803,
+          "height": 803
+        }
+      ]
+    },
+    {
+      "id": "4f96d0c8-f76c-431e-a7a1-15066d7af89e",
+      "slug": "guinness-split-pint",
+      "title": "Guinness Split Pint",
+      "client": "Guinness",
+      "agency": "Graham Tooby",
+      "type": "image",
+      "thumbnail": "/images/still-life/guinness-split-pint/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 5,
+      "images": [
+        {
+          "url": "/images/still-life/guinness-split-pint/detail.jpg",
+          "alt": "Guinness Split Pint - Main view",
+          "width": 894,
+          "height": 594
+        }
+      ]
+    },
+    {
+      "id": "55785ee6-5e9b-4faf-b1fb-a0ab88f44305",
+      "slug": "stella-artois-cidre",
+      "title": "Stella Artois Cidre",
+      "client": "Stella Artois",
+      "agency": "Metz and Racine",
+      "type": "image",
+      "thumbnail": "/images/still-life/stella-artois-cidre/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 6,
+      "images": [
+        {
+          "url": "/images/still-life/stella-artois-cidre/detail.jpg",
+          "alt": "Stella Artois Cidre - Main view",
+          "width": 674,
+          "height": 1010
+        }
+      ]
+    },
+    {
+      "id": "6494e7cd-362a-45d6-a2ac-30c2d312534e",
+      "slug": "experis-1",
+      "title": "Experis 1",
+      "agency": "Jillian Lochner",
+      "type": "image",
+      "thumbnail": "/images/still-life/experis-1/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 7,
+      "images": [
+        {
+          "url": "/images/still-life/experis-1/detail.jpg",
+          "alt": "Experis 1 - Main view",
+          "width": 756,
+          "height": 1009
+        }
+      ]
+    },
+    {
+      "id": "65ca0857-ee46-426f-aa45-4a57d5575f7a",
+      "slug": "nhs-quit-smoking-1",
+      "title": "NHS Quit Smoking 1",
+      "agency": "Wilson Hennessy",
+      "type": "image",
+      "thumbnail": "/images/still-life/nhs-quit-smoking-1/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 8,
+      "images": [
+        {
+          "url": "/images/still-life/nhs-quit-smoking-1/detail.jpg",
+          "alt": "NHS Quit Smoking 1 - Main view",
+          "width": 803,
+          "height": 452
+        }
+      ]
+    },
+    {
+      "id": "71417eb1-1bf3-4040-bd8f-ae15e8e51568",
+      "slug": "oversized-sugar-dispenser",
+      "title": "Oversized Sugar Dispenser",
+      "type": "image",
+      "thumbnail": "/images/still-life/oversized-sugar-dispenser/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 9,
+      "images": [
+        {
+          "url": "/images/still-life/oversized-sugar-dispenser/detail.jpg",
+          "alt": "Oversized Sugar Dispenser - Main view",
+          "width": 1280,
+          "height": 783
+        }
+      ]
+    },
+    {
+      "id": "7167e2e2-679b-456f-bf48-7e3d97a77419",
+      "slug": "ming-vase",
+      "title": "Ming Vase",
+      "agency": "Hugh Johnson",
+      "type": "image",
+      "thumbnail": "/images/still-life/ming-vase/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 10,
+      "images": [
+        {
+          "url": "/images/still-life/ming-vase/detail.jpg",
+          "alt": "Ming Vase - Main view",
+          "width": 821,
+          "height": 567
+        }
+      ]
+    },
+    {
+      "id": "71951ed5-fb84-448f-9b71-0fca8e559bf1",
+      "slug": "smirnoff-woodpecker-and-log-sculpture",
+      "title": "Smirnoff Woodpecker & Log Sculpture",
+      "client": "Smirnoff",
+      "type": "image",
+      "thumbnail": "/images/still-life/smirnoff-woodpecker-and-log-sculpture/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 11,
+      "images": [
+        {
+          "url": "/images/still-life/smirnoff-woodpecker-and-log-sculpture/detail.jpg",
+          "alt": "Smirnoff Woodpecker & Log Sculpture - Main view",
+          "width": 796,
+          "height": 502
+        }
+      ]
+    },
+    {
+      "id": "bd0b7413-e8ca-49ad-ab85-d7b8490d830c",
+      "slug": "cyber-aware-safe",
+      "title": "Cyber Aware Safe",
+      "client": "Cyber Aware",
+      "agency": "Wilson Hennessy",
+      "type": "image",
+      "thumbnail": "/images/still-life/cyber-aware-safe/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 12
+    },
+    {
+      "id": "bd26940f-fa4d-4a7b-915b-eb60fbc3d5e5",
+      "slug": "mandarin-oriental",
+      "title": "Mandarin Oriental",
+      "agency": "Richard Maxted",
+      "type": "image",
+      "thumbnail": "/images/still-life/mandarin-oriental/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 13,
+      "images": [
+        {
+          "url": "/images/still-life/mandarin-oriental/detail.jpg",
+          "alt": "Mandarin Oriental - Main view",
+          "width": 803,
+          "height": 599
+        }
+      ]
+    },
+    {
+      "id": "db9f71d2-8d8e-4e86-992c-cadb9498f321",
+      "slug": "union-jack-flag",
+      "title": "Union Jack Flag",
+      "type": "image",
+      "thumbnail": "/images/still-life/union-jack-flag/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 14,
+      "images": [
+        {
+          "url": "/images/still-life/union-jack-flag/detail.jpg",
+          "alt": "Union Jack Flag - Main view",
+          "width": 1133,
+          "height": 753
+        }
+      ]
+    },
+    {
+      "id": "dfe2f905-cd44-4ef3-aff0-9a9e11421698",
+      "slug": "ikea-boat-toy",
+      "title": "Ikea Boat Toy",
+      "client": "Ikea",
+      "type": "image",
+      "thumbnail": "/images/still-life/ikea-boat-toy/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 15,
+      "images": [
+        {
+          "url": "/images/still-life/ikea-boat-toy/detail.jpg",
+          "alt": "Ikea Boat Toy - Main view",
+          "width": 743,
+          "height": 496
+        }
+      ]
+    },
+    {
+      "id": "f602cb39-9f9f-40ec-a969-f86401f1102d",
+      "slug": "007-cologne",
+      "title": "007 cologne",
+      "agency": "Johanna Parkin",
+      "type": "image",
+      "thumbnail": "/images/still-life/007-cologne/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 16,
+      "images": [
+        {
+          "url": "/images/still-life/007-cologne/detail.jpg",
+          "alt": "007 cologne - Main view",
+          "width": 795,
+          "height": 1010
+        }
+      ]
+    },
+    {
+      "id": "fc276638-3de7-45a1-8890-8c3e1b13445d",
+      "slug": "wickes-sale",
+      "title": "Wickes Sale",
+      "type": "image",
+      "thumbnail": "/images/still-life/wickes-sale/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 17,
+      "images": [
+        {
+          "url": "/images/still-life/wickes-sale/detail.jpg",
+          "alt": "Wickes Sale - Main view",
+          "width": 1280,
+          "height": 588
+        }
+      ]
+    }
+  ]
+}

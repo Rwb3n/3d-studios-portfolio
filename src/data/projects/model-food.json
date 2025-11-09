@@ -1,0 +1,354 @@
+{
+  "category": "model-food",
+  "projects": [
+    {
+      "id": "17a95fcc-5f25-46cd-8ce5-9ceb263aa584",
+      "slug": "alpro",
+      "title": "Alpro",
+      "agency": "Mark Polyblank",
+      "type": "image",
+      "thumbnail": "/images/model-food/alpro/thumbnail.jpg",
+      "tags": [],
+      "featured": true,
+      "order": 1,
+      "images": [
+        {
+          "url": "/images/model-food/alpro/detail.jpg",
+          "alt": "Alpro - Main view",
+          "width": 968,
+          "height": 1280
+        }
+      ]
+    },
+    {
+      "id": "199f8524-2d82-4ead-b3f6-88e662ca4548",
+      "slug": "walls-unilever-magnum",
+      "title": "Walls Unilever Magnum",
+      "client": "Walls Unilever",
+      "agency": "Lux Studios",
+      "type": "image",
+      "thumbnail": "/images/model-food/walls-unilever-magnum/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 2,
+      "images": [
+        {
+          "url": "/images/model-food/walls-unilever-magnum/detail.jpg",
+          "alt": "Walls Unilever Magnum - Main view",
+          "width": 821,
+          "height": 1140
+        }
+      ]
+    },
+    {
+      "id": "212905d6-449c-407d-b80b-90e844fa86bc",
+      "slug": "cadbury-creme-egg",
+      "title": "Cadbury Creme Egg",
+      "client": "Cadbury's",
+      "type": "image",
+      "thumbnail": "/images/model-food/cadbury-creme-egg/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 3,
+      "images": [
+        {
+          "url": "/images/model-food/cadbury-creme-egg/detail.jpg",
+          "alt": "Cadbury Creme Egg - Main view",
+          "width": 801,
+          "height": 402
+        }
+      ]
+    },
+    {
+      "id": "21314844-ce31-4f5b-b65b-06a743d9a39e",
+      "slug": "haagen-daz",
+      "title": "Haagen Daz",
+      "client": "Haagen Daz",
+      "agency": "Sam Hofman",
+      "type": "image",
+      "thumbnail": "/images/model-food/haagen-daz/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 4,
+      "images": [
+        {
+          "url": "/images/model-food/haagen-daz/detail.jpg",
+          "alt": "Haagen Daz - Main view",
+          "width": 854,
+          "height": 1140
+        }
+      ]
+    },
+    {
+      "id": "2bcb1eea-8cc1-4966-b34e-e9f7c26c7e17",
+      "slug": "cadbury-oreo",
+      "title": "Cadbury Oreo",
+      "client": "Cadbury's",
+      "agency": "Kevin Summers",
+      "type": "image",
+      "thumbnail": "/images/model-food/cadbury-oreo/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 5,
+      "images": [
+        {
+          "url": "/images/model-food/cadbury-oreo/detail.jpg",
+          "alt": "Cadbury Oreo - Main view",
+          "width": 854,
+          "height": 1280
+        }
+      ]
+    },
+    {
+      "id": "3d50d10d-7ac2-4b64-b1af-5be578910cda",
+      "slug": "cadbury-smashables",
+      "title": "Cadbury Smashables",
+      "client": "Cadbury's",
+      "agency": "Kevin Summers",
+      "type": "image",
+      "thumbnail": "/images/model-food/cadbury-smashables/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 6,
+      "images": [
+        {
+          "url": "/images/model-food/cadbury-smashables/detail.jpg",
+          "alt": "Cadbury Smashables - Main view",
+          "width": 855,
+          "height": 1280
+        }
+      ]
+    },
+    {
+      "id": "5d23e7cc-5d79-4c03-9e25-997af45423a3",
+      "slug": "cadbury-twirl",
+      "title": "Cadbury Twirl",
+      "client": "Cadbury",
+      "type": "image",
+      "thumbnail": "/images/model-food/cadbury-twirl/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 7,
+      "images": [
+        {
+          "url": "/images/model-food/cadbury-twirl/detail.jpg",
+          "alt": "Cadbury Twirl - Main view",
+          "width": 854,
+          "height": 1280
+        }
+      ]
+    },
+    {
+      "id": "97c7f851-1798-4ac2-be85-6ecfcb1a2d3c",
+      "slug": "cadbury",
+      "title": "Cadbury",
+      "client": "Cadbury",
+      "type": "image",
+      "thumbnail": "/images/model-food/cadbury/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 8,
+      "images": [
+        {
+          "url": "/images/model-food/cadbury/detail.jpg",
+          "alt": "Cadbury - Main view",
+          "width": 657,
+          "height": 1000
+        }
+      ]
+    },
+    {
+      "id": "9e5a3927-21d0-4c00-9e97-201cb0b231b0",
+      "slug": "rudolf-egg",
+      "title": "Rudolf Egg",
+      "agency": "Carl Warner",
+      "type": "image",
+      "thumbnail": "/images/model-food/rudolf-egg/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 9,
+      "images": [
+        {
+          "url": "/images/model-food/rudolf-egg/detail.jpg",
+          "alt": "Rudolf Egg - Main view",
+          "width": 1052,
+          "height": 1280
+        }
+      ]
+    },
+    {
+      "id": "a454e276-a8e7-4b56-a184-10839c088589",
+      "slug": "baileys-ice",
+      "title": "Bailey's Ice",
+      "client": "Bailey's",
+      "type": "image",
+      "thumbnail": "/images/model-food/baileys-ice/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 10,
+      "images": [
+        {
+          "url": "/images/model-food/baileys-ice/detail.jpg",
+          "alt": "Bailey's Ice - Main view",
+          "width": 854,
+          "height": 1280
+        }
+      ]
+    },
+    {
+      "id": "a96132c6-466b-40e6-86b7-c396fd8d48f9",
+      "slug": "walls-unilever-ice-cream",
+      "title": "Walls Unilever Ice Cream",
+      "client": "Walls Unilever",
+      "agency": "Kevin Summers",
+      "type": "image",
+      "thumbnail": "/images/model-food/walls-unilever-ice-cream/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 11,
+      "images": [
+        {
+          "url": "/images/model-food/walls-unilever-ice-cream/detail.jpg",
+          "alt": "Walls Unilever Ice Cream - Main view",
+          "width": 720,
+          "height": 1280
+        }
+      ]
+    },
+    {
+      "id": "ae08087f-ff02-4192-9713-b8bfa22b022a",
+      "slug": "cadbury-creme-egg-on-toast",
+      "title": "Cadbury Creme Egg on Toast",
+      "client": "Cadbury",
+      "type": "image",
+      "thumbnail": "/images/model-food/cadbury-creme-egg-on-toast/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 12,
+      "images": [
+        {
+          "url": "/images/model-food/cadbury-creme-egg-on-toast/detail.jpg",
+          "alt": "Cadbury Creme Egg on Toast - Main view",
+          "width": 960,
+          "height": 1280
+        }
+      ]
+    },
+    {
+      "id": "b73afafb-1e1b-4ff0-880b-0c7c711ec14f",
+      "slug": "knorr-stock-pot",
+      "title": "Knorr Stock Pot",
+      "client": "Knorr",
+      "agency": "Diana Miller",
+      "type": "image",
+      "thumbnail": "/images/model-food/knorr-stock-pot/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 13,
+      "images": [
+        {
+          "url": "/images/model-food/knorr-stock-pot/detail.jpg",
+          "alt": "Knorr Stock Pot - Main view",
+          "width": 801,
+          "height": 601
+        }
+      ]
+    },
+    {
+      "id": "b9dc6618-fc93-4c9d-a792-df254c31b6eb",
+      "slug": "green-and-blacks-chocolate",
+      "title": "Green & Blacks Chocolate",
+      "client": "Green & Blacks",
+      "type": "image",
+      "thumbnail": "/images/model-food/green-and-blacks-chocolate/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 14,
+      "images": [
+        {
+          "url": "/images/model-food/green-and-blacks-chocolate/detail.jpg",
+          "alt": "Green & Blacks Chocolate - Main view",
+          "width": 803,
+          "height": 401
+        }
+      ]
+    },
+    {
+      "id": "c3e30f46-c3f2-4e1b-86e7-dd71ef7c5398",
+      "slug": "jaffa-cake",
+      "title": "Jaffa Cake",
+      "client": "Food Hall",
+      "type": "image",
+      "thumbnail": "/images/model-food/jaffa-cake/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 15,
+      "images": [
+        {
+          "url": "/images/model-food/jaffa-cake/detail.jpg",
+          "alt": "Jaffa Cake - Main view",
+          "width": 864,
+          "height": 432
+        }
+      ]
+    },
+    {
+      "id": "d66e5fad-bdc4-4cc4-a8b3-de8b67eb0329",
+      "slug": "silk-milk",
+      "title": "Silk Milk",
+      "client": "Silk",
+      "agency": "Andric",
+      "type": "image",
+      "thumbnail": "/images/model-food/silk-milk/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 16,
+      "images": [
+        {
+          "url": "/images/model-food/silk-milk/detail.jpg",
+          "alt": "Silk Milk - Main view",
+          "width": 960,
+          "height": 1280
+        }
+      ]
+    },
+    {
+      "id": "e0274a27-bb75-4568-8d28-d6a146191774",
+      "slug": "creme-egg-on-toast",
+      "title": "Creme Egg on Toast",
+      "type": "image",
+      "thumbnail": "/images/model-food/creme-egg-on-toast/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 17,
+      "images": [
+        {
+          "url": "/images/model-food/creme-egg-on-toast/detail.jpg",
+          "alt": "Creme Egg on Toast - Main view",
+          "width": 1622,
+          "height": 1116
+        }
+      ]
+    },
+    {
+      "id": "ebecf993-cbbe-4683-9578-e9a0b95ac681",
+      "slug": "cadbury-crunchie",
+      "title": "Cadbury Crunchie",
+      "client": "Cadbury's",
+      "agency": "Jean Yves Lemoigne",
+      "type": "image",
+      "thumbnail": "/images/model-food/cadbury-crunchie/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 18,
+      "images": [
+        {
+          "url": "/images/model-food/cadbury-crunchie/detail.jpg",
+          "alt": "Cadbury Crunchie - Main view",
+          "width": 854,
+          "height": 1280
+        }
+      ]
+    }
+  ]
+}

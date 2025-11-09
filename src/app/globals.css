@@ -1,26 +1,111 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand Colors (from Wix site) */
+  --background: #cccccc;  /* Light gray background */
+  --surface: #ffffff;     /* White containers/cards */
+  --text: #000000;        /* Black text */
+  --text-secondary: #666666;  /* Gray secondary text */
+
+  /* Layout */
+  --max-width: 1280px;
+  --gutter: 20px;
+  --grid-gap: 30px;
 }
 
 @theme inline {
   --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-surface: var(--surface);
+  --color-text: var(--text);
+  --color-text-secondary: var(--text-secondary);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Typography */
+  --font-sans: 'Arial', 'Helvetica', sans-serif;
+
+  /* Font Sizes - matching Wix design */
+  --font-size-h1: 48px;
+  --font-size-h2: 22px;
+  --font-size-h3: 18px;
+  --font-size-body: 16px;
+  --font-size-body-lg: 18px;
+
+  /* Line Heights */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.7;
+
+  /* Spacing */
+  --spacing-gutter: var(--gutter);
+  --spacing-grid-gap: var(--grid-gap);
+
+  /* Container */
+  --max-w-container: var(--max-width);
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+  padding: 0;
+}
+
+/* Typography Defaults */
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: 700;
+  line-height: var(--line-height-tight);
+  color: var(--text);
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: 500;
+  line-height: var(--line-height-normal);
+  color: var(--text);
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+  font-weight: 500;
+  line-height: var(--line-height-normal);
+  color: var(--text);
+}
+
+p {
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-relaxed);
+  color: var(--text);
+}
+
+/* Keyboard Navigation - Accessibility Focus Styles */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Remove default focus outline when focus-visible is used */
+button:focus:not(:focus-visible),
+a:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Button Hover Animations */
+.button-hover {
+  transition: transform 150ms ease-in-out, background-color 150ms ease-in-out;
+}
+
+.button-hover:hover {
+  transform: scale(1.05);
+}
+
+.button-hover:active {
+  transform: scale(0.98);
 }

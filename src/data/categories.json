@@ -1,0 +1,67 @@
+{
+  "categories": [
+    {
+      "id": "category-still-life",
+      "name": "Still Life",
+      "slug": "still-life",
+      "description": "Professional still life for advertising and display",
+      "thumbnail": "/images/categories/still-life.jpg",
+      "order": 1,
+      "featured": true
+    },
+    {
+      "id": "category-model-food",
+      "name": "Model Food",
+      "slug": "model-food",
+      "description": "Professional model food for advertising and display",
+      "thumbnail": "/images/categories/model-food.jpg",
+      "order": 2,
+      "featured": true
+    },
+    {
+      "id": "category-real-food",
+      "name": "Real Food",
+      "slug": "real-food",
+      "description": "Professional real food for advertising and display",
+      "thumbnail": "/images/categories/real-food.jpg",
+      "order": 3,
+      "featured": true
+    },
+    {
+      "id": "category-food-scenics",
+      "name": "Food Scenics",
+      "slug": "food-scenics",
+      "description": "Professional food scenics for advertising and display",
+      "thumbnail": "/images/categories/food-scenics.jpg",
+      "order": 4,
+      "featured": true
+    },
+    {
+      "id": "category-window-displays",
+      "name": "Window Displays",
+      "slug": "window-displays",
+      "description": "Professional window displays for advertising and display",
+      "thumbnail": "/images/categories/window-displays.jpg",
+      "order": 5,
+      "featured": true
+    },
+    {
+      "id": "category-art-projects",
+      "name": "Art Projects",
+      "slug": "art-projects",
+      "description": "Professional art projects for advertising and display",
+      "thumbnail": "/images/categories/art-projects.jpg",
+      "order": 6,
+      "featured": true
+    },
+    {
+      "id": "category-moving-image",
+      "name": "Moving Image",
+      "slug": "moving-image",
+      "description": "Professional moving image for advertising and display",
+      "thumbnail": "/images/categories/moving-image.jpg",
+      "order": 7,
+      "featured": true
+    }
+  ]
+}

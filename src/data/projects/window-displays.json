@@ -1,0 +1,252 @@
+{
+  "category": "window-displays",
+  "projects": [
+    {
+      "id": "1213c9b8-65bd-44fa-8c97-afc6d6836881",
+      "slug": "foot-patrol-logo-character",
+      "title": "Foot Patrol  Logo Character",
+      "client": "Foot Patrol",
+      "type": "image",
+      "thumbnail": "/images/window-displays/foot-patrol-logo-character/thumbnail.jpg",
+      "tags": [],
+      "featured": true,
+      "order": 1,
+      "images": [
+        {
+          "url": "/images/window-displays/foot-patrol-logo-character/detail.jpg",
+          "alt": "Foot Patrol  Logo Character - Main view",
+          "width": 923,
+          "height": 614
+        }
+      ]
+    },
+    {
+      "id": "2481444e-1c07-4140-a533-48de1b5b89f9",
+      "slug": "adidas-flagship-display-1",
+      "title": "Adidas Flagship Display 1",
+      "client": "Adidas",
+      "type": "image",
+      "thumbnail": "/images/window-displays/adidas-flagship-display-1/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 2,
+      "images": [
+        {
+          "url": "/images/window-displays/adidas-flagship-display-1/detail.jpg",
+          "alt": "Adidas Flagship Display 1 - Main view",
+          "width": 663,
+          "height": 666
+        }
+      ]
+    },
+    {
+      "id": "5336e283-0d27-4b8e-ae15-82c625e06b43",
+      "slug": "selfridges-windows-display-5",
+      "title": "Selfridge's Windows Display 5",
+      "client": "Selfridge's",
+      "type": "image",
+      "thumbnail": "/images/window-displays/selfridges-windows-display-5/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 3,
+      "images": [
+        {
+          "url": "/images/window-displays/selfridges-windows-display-5/detail.jpg",
+          "alt": "Selfridge's Windows Display 5 - Main view",
+          "width": 923,
+          "height": 611
+        }
+      ]
+    },
+    {
+      "id": "77c2347d-3e37-46ea-9290-497601923766",
+      "slug": "foot-patrol-display",
+      "title": "Foot Patrol Display",
+      "client": "Foot Patrol",
+      "type": "image",
+      "thumbnail": "/images/window-displays/foot-patrol-display/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 4,
+      "images": [
+        {
+          "url": "/images/window-displays/foot-patrol-display/detail.jpg",
+          "alt": "Foot Patrol Display - Main view",
+          "width": 960,
+          "height": 1280
+        }
+      ]
+    },
+    {
+      "id": "782fd02d-a414-4ecf-ada1-5ba19e46f599",
+      "slug": "jd-sports",
+      "title": "JD Sports",
+      "client": "JD Sports",
+      "type": "image",
+      "thumbnail": "/images/window-displays/jd-sports/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 5,
+      "images": [
+        {
+          "url": "/images/window-displays/jd-sports/detail.jpg",
+          "alt": "JD Sports - Main view",
+          "width": 922,
+          "height": 207
+        }
+      ]
+    },
+    {
+      "id": "99903624-4de1-4eac-92cf-a37872d2aea9",
+      "slug": "selfridges-windows-display-1",
+      "title": "Selfridge's Windows Display 1",
+      "client": "Selfridge's",
+      "type": "image",
+      "thumbnail": "/images/window-displays/selfridges-windows-display-1/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 6,
+      "images": [
+        {
+          "url": "/images/window-displays/selfridges-windows-display-1/detail.jpg",
+          "alt": "Selfridge's Windows Display 1 - Main view",
+          "width": 923,
+          "height": 612
+        }
+      ]
+    },
+    {
+      "id": "9c22164d-06b6-41b4-85a7-a7487f89b319",
+      "slug": "adidas-flagship-display-2",
+      "title": "Adidas Flagship Display 2",
+      "client": "Adidas",
+      "type": "image",
+      "thumbnail": "/images/window-displays/adidas-flagship-display-2/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 7,
+      "images": [
+        {
+          "url": "/images/window-displays/adidas-flagship-display-2/detail.jpg",
+          "alt": "Adidas Flagship Display 2 - Main view",
+          "width": 1280,
+          "height": 691
+        }
+      ]
+    },
+    {
+      "id": "a0901b4d-08bf-4925-a388-798845fb4b57",
+      "slug": "jd-sports",
+      "title": "JD SPorts",
+      "client": "Nike",
+      "type": "image",
+      "thumbnail": "/images/window-displays/jd-sports/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 8,
+      "images": [
+        {
+          "url": "/images/window-displays/jd-sports/detail.jpg",
+          "alt": "JD SPorts - Main view",
+          "width": 923,
+          "height": 653
+        }
+      ]
+    },
+    {
+      "id": "b579a50e-509f-41b2-82e2-563b6bcba051",
+      "slug": "selfridges-windows-display-2",
+      "title": "Selfridge's Windows Display 2",
+      "client": "Selfridge's",
+      "type": "image",
+      "thumbnail": "/images/window-displays/selfridges-windows-display-2/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 9,
+      "images": [
+        {
+          "url": "/images/window-displays/selfridges-windows-display-2/detail.jpg",
+          "alt": "Selfridge's Windows Display 2 - Main view",
+          "width": 923,
+          "height": 613
+        }
+      ]
+    },
+    {
+      "id": "b985bbcc-4ef8-4125-868a-16d373a042ea",
+      "slug": "selfridges-window-display-2023",
+      "title": "Selfridge's Window Display 2023",
+      "client": "Selfridge's",
+      "type": "image",
+      "thumbnail": "/images/window-displays/selfridges-window-display-2023/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 10,
+      "images": [
+        {
+          "url": "/images/window-displays/selfridges-window-display-2023/detail.jpg",
+          "alt": "Selfridge's Window Display 2023 - Main view",
+          "width": 1205,
+          "height": 904
+        }
+      ]
+    },
+    {
+      "id": "b9cdfa38-5c46-44a3-8a51-e8339010aa1d",
+      "slug": "selfridges-windows-display-4",
+      "title": "Selfridge's Windows Display 4",
+      "client": "Selfridge's",
+      "type": "image",
+      "thumbnail": "/images/window-displays/selfridges-windows-display-4/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 11,
+      "images": [
+        {
+          "url": "/images/window-displays/selfridges-windows-display-4/detail.jpg",
+          "alt": "Selfridge's Windows Display 4 - Main view",
+          "width": 705,
+          "height": 1064
+        }
+      ]
+    },
+    {
+      "id": "c3d473b3-25fb-496d-a878-59468f421598",
+      "slug": "selfridges-windows-display-3",
+      "title": "Selfridge's Windows Display 3",
+      "client": "Selfridge's",
+      "type": "image",
+      "thumbnail": "/images/window-displays/selfridges-windows-display-3/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 12,
+      "images": [
+        {
+          "url": "/images/window-displays/selfridges-windows-display-3/detail.jpg",
+          "alt": "Selfridge's Windows Display 3 - Main view",
+          "width": 923,
+          "height": 612
+        }
+      ]
+    },
+    {
+      "id": "fbce6a8e-6b29-41fb-b1bc-6b6c9124ef24",
+      "slug": "bicester-village",
+      "title": "Bicester Village",
+      "client": "Karmer Studios",
+      "type": "image",
+      "thumbnail": "/images/window-displays/bicester-village/thumbnail.jpg",
+      "tags": [],
+      "featured": false,
+      "order": 13,
+      "images": [
+        {
+          "url": "/images/window-displays/bicester-village/detail.jpg",
+          "alt": "Bicester Village - Main view",
+          "width": 923,
+          "height": 615
+        }
+      ]
+    }
+  ]
+}
