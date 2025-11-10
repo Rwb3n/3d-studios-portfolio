@@ -40,37 +40,33 @@ export default function WorkPage() {
   return (
     <div className="max-w-7xl mx-auto px-6 py-16">
       {/* Category Grid - per UI_COMPONENTS.md §5 */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {categories.map((category) => (
           <Link
             key={category.id}
             href={`/work/${category.slug}`}
             className="group relative overflow-hidden"
           >
-            {/* Category Image (4:3 aspect ratio) */}
+            {/* Category Image (4:3 aspect ratio) with overlay text */}
             <div className="relative w-full aspect-[4/3] bg-gray-300 overflow-hidden">
               <Image
                 src={category.thumbnail}
                 alt={category.name}
                 fill
-                className="object-cover transition-opacity duration-300"
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 loading="lazy"
               />
 
-              {/* Overlay with category name - appears on hover */}
-              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-10">
-                <h2 className="text-white text-2xl font-medium uppercase">
+              {/* Semi-transparent overlay (always visible, darkens on hover) */}
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300 z-10" />
+
+              {/* Category name overlay with white pill background */}
+              <div className="absolute inset-0 flex items-center justify-center z-20">
+                <h2 className="text-black text-2xl md:text-3xl font-bold text-center px-8 py-4 bg-white/90 rounded-lg shadow-lg uppercase tracking-wide">
                   {category.name}
                 </h2>
               </div>
-            </div>
-
-            {/* Category name below (always visible) */}
-            <div className="mt-4 text-center">
-              <h3 className="text-xl font-medium uppercase tracking-wide group-hover:text-gray-600 transition-colors">
-                {category.name}
-              </h3>
             </div>
           </Link>
         ))}
