@@ -52,26 +52,29 @@ export default function HeroCarousel({
     <div className="relative w-full bg-gray-900 overflow-hidden">
       {/* Main Carousel */}
       <div className="relative w-full aspect-[16/9] md:aspect-[21/9] lg:aspect-[24/9]">
-        {/* Images */}
-        <div className="relative w-full h-full">
-          {projects.map((project, index) => (
-            <div
-              key={project.id}
-              className={`absolute inset-0 transition-opacity duration-1000 ${
-                index === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
-              }`}
-            >
-              <Image
-                src={project.thumbnail}
-                alt={project.title}
-                fill
-                className="object-cover transition-opacity duration-1000"
-                priority={index === 0}
-                loading={index === 0 ? undefined : 'lazy'}
-                sizes="100vw"
-              />
-            </div>
-          ))}
+        {/* Images - Horizontal sliding carousel */}
+        <div className="relative w-full h-full overflow-hidden">
+          <div
+            className="flex h-full transition-transform duration-700 ease-in-out"
+            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          >
+            {projects.map((project, index) => (
+              <div
+                key={project.id}
+                className="min-w-full h-full flex-shrink-0 relative"
+              >
+                <Image
+                  src={project.thumbnail}
+                  alt={project.title}
+                  fill
+                  className="object-cover"
+                  priority={index === 0}
+                  loading={index === 0 ? undefined : 'lazy'}
+                  sizes="100vw"
+                />
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Gradient Overlay (bottom) */}

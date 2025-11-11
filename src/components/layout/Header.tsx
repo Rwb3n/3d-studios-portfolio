@@ -49,7 +49,7 @@ export default function Header() {
         <div className="flex items-center justify-between">
           {/* Logo - Left aligned */}
           <Link href="/">
-            <Logo width={113} height={78} />
+            <Logo width={180} height={124} />
           </Link>
 
           {/* Hamburger Button - Mobile only (< 1024px) */}

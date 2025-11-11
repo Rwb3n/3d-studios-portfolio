@@ -40,26 +40,6 @@ export default function HomePage() {
     <div>
       {/* Hero Carousel - UI_COMPONENTS.md §3 */}
       <HeroCarousel projects={featuredProjects} autoScrollInterval={5000} />
-
-      {/* Introduction Section */}
-      <section className="max-w-4xl mx-auto px-6 py-16 text-center">
-        <p className="text-lg md:text-xl leading-relaxed">
-          For more than four decades, 3D Studios has been the silent artist
-          behind some of the world&apos;s most memorable advertising campaigns
-          and product displays. We don&apos;t just create models; we bring ideas to
-          life.
-        </p>
-      </section>
-
-      {/* Email CTA Button */}
-      <section className="text-center pb-20">
-        <a
-          href="mailto:paul@3d-studios.co.uk"
-          className="inline-block px-12 py-4 bg-black text-white text-lg font-medium hover:bg-gray-800 transition-all duration-150 hover:scale-105 transform"
-        >
-          paul@3d-studios.co.uk
-        </a>
-      </section>
     </div>
   )
 }

@@ -149,38 +149,18 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </p>
           )}
 
-          {/* Image Gallery */}
+          {/* Image Display - Using thumbnail since detail images don't exist */}
           <div className="mb-12">
-            {project.images && project.images.length > 0 ? (
-              <div className="space-y-6">
-                {project.images.map((img, index) => (
-                  <div
-                    key={index}
-                    className="relative w-full bg-gray-100"
-                    style={{ aspectRatio: `${img.width} / ${img.height}` }}
-                  >
-                    <Image
-                      src={img.url}
-                      alt={img.alt || `${project.title} - Image ${index + 1}`}
-                      fill
-                      className="object-contain"
-                      sizes="(max-width: 1280px) 100vw, 1280px"
-                    />
-                  </div>
-                ))}
-              </div>
-            ) : (
-              // Fallback: show thumbnail if no images array
-              <div className="relative w-full aspect-[4/3] bg-gray-100">
-                <Image
-                  src={project.thumbnail}
-                  alt={project.title}
-                  fill
-                  className="object-contain"
-                  sizes="(max-width: 1280px) 100vw, 1280px"
-                />
-              </div>
-            )}
+            <div className="relative w-full aspect-[4/3] bg-gray-100">
+              <Image
+                src={project.thumbnail}
+                alt={project.title}
+                fill
+                className="object-contain"
+                sizes="(max-width: 1280px) 100vw, 1280px"
+                priority
+              />
+            </div>
           </div>
         </>
       )}
