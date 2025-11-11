@@ -79,11 +79,13 @@ export default function HeroCarousel({
     return null
   }
 
-  // Display the actual project based on wrapped index
-  const displayIndex = currentIndex === 0 ? projects.length - 1 :
-                       currentIndex === projects.length + 1 ? 0 :
-                       currentIndex - 1
-  const currentProject = projects[displayIndex]
+  // Use extendedProjects directly - it already has the right structure
+  const currentProject = extendedProjects[currentIndex]
+
+  // Safety check - should never happen but prevents crashes
+  if (!currentProject) {
+    return null
+  }
 
   return (
     <div className="relative w-full bg-gray-900 overflow-hidden">
