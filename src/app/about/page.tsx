@@ -37,25 +37,25 @@ export default function AboutPage() {
   return (
     <div className="max-w-6xl mx-auto px-6 py-16">
       {/* Hero Section - per UI_COMPONENTS.md §10 */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-        {/* Profile Photo - Left aligned */}
-        <div className="flex justify-center md:justify-start">
-          <div className="relative w-64 h-64">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start mb-16">
+        {/* Profile Photo - Responsive within grid */}
+        <div className="w-full max-w-md mx-auto md:mx-0">
+          <div className="relative w-full aspect-square">
             <Image
               src="/images/about/paul-baker.jpg"
               alt="Paul Baker, Modelmaker"
-              width={256}
-              height={256}
-              className="object-cover"
+              fill
+              className="object-cover rounded-lg shadow-lg"
+              sizes="(max-width: 768px) 100vw, 50vw"
               priority
             />
           </div>
         </div>
 
-        {/* Name and Titles - Right aligned */}
-        <div className="flex flex-col justify-center text-center md:text-left">
-          <h1 className="text-5xl font-bold mb-4">PAUL BAKER</h1>
-          <div className="text-2xl text-gray-700 space-y-2">
+        {/* Name and Titles - Aligned top with image */}
+        <div className="flex flex-col justify-start text-center md:text-left pt-0 md:pt-4">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">PAUL BAKER</h1>
+          <div className="text-xl md:text-2xl text-gray-700 space-y-3">
             <p>Modelmaker</p>
             <p>Designer</p>
             <p>Food Sculptor</p>

@@ -17,50 +17,90 @@ export default function HeroCarousel({
   projects,
   autoScrollInterval = 5000,
 }: HeroCarouselProps) {
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const [currentIndex, setCurrentIndex] = useState(1) // Start at 1 (first real slide)
+  const [isTransitioning, setIsTransitioning] = useState(true)
 
-  // Auto-scroll effect
+  // Create extended array with duplicates for seamless loop
+  // [last, ...projects, first]
+  const extendedProjects =
+    projects.length > 1
+      ? [projects[projects.length - 1], ...projects, projects[0]]
+      : projects
+
+  // Auto-scroll effect with seamless loop
   useEffect(() => {
     if (projects.length <= 1) return
 
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % projects.length)
+      setCurrentIndex((prev) => prev + 1)
     }, autoScrollInterval)
 
     return () => clearInterval(interval)
   }, [projects.length, autoScrollInterval])
 
+  // Handle seamless loop transitions
+  useEffect(() => {
+    if (projects.length <= 1) return
+
+    // If we're at the cloned last slide (index 0), snap to real last slide
+    if (currentIndex === 0) {
+      setTimeout(() => {
+        setIsTransitioning(false)
+        setCurrentIndex(projects.length)
+      }, 700) // After transition completes
+    }
+    // If we're at the cloned first slide, snap to real first slide
+    else if (currentIndex === projects.length + 1) {
+      setTimeout(() => {
+        setIsTransitioning(false)
+        setCurrentIndex(1)
+      }, 700) // After transition completes
+    } else {
+      setIsTransitioning(true)
+    }
+  }, [currentIndex, projects.length])
+
   const goToSlide = (index: number) => {
-    setCurrentIndex(index)
+    setIsTransitioning(true)
+    setCurrentIndex(index + 1) // +1 to account for cloned slide at start
   }
 
   const goToPrevious = () => {
-    setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length)
+    setIsTransitioning(true)
+    setCurrentIndex((prev) => prev - 1)
   }
 
   const goToNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % projects.length)
+    setIsTransitioning(true)
+    setCurrentIndex((prev) => prev + 1)
   }
 
   if (projects.length === 0) {
     return null
   }
 
-  const currentProject = projects[currentIndex]
+  // Display the actual project based on wrapped index
+  const displayIndex = currentIndex === 0 ? projects.length - 1 :
+                       currentIndex === projects.length + 1 ? 0 :
+                       currentIndex - 1
+  const currentProject = projects[displayIndex]
 
   return (
     <div className="relative w-full bg-gray-900 overflow-hidden">
       {/* Main Carousel */}
       <div className="relative w-full aspect-[16/9] md:aspect-[21/9] lg:aspect-[24/9]">
-        {/* Images - Horizontal sliding carousel */}
+        {/* Images - Horizontal sliding carousel with seamless loop */}
         <div className="relative w-full h-full overflow-hidden">
           <div
-            className="flex h-full transition-transform duration-700 ease-in-out"
-            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            className="flex h-full"
+            style={{
+              transform: `translateX(-${currentIndex * 100}%)`,
+              transition: isTransitioning ? 'transform 700ms ease-in-out' : 'none',
+            }}
           >
-            {projects.map((project, index) => (
+            {extendedProjects.map((project, index) => (
               <div
-                key={project.id}
+                key={`${project.id}-${index}`}
                 className="min-w-full h-full flex-shrink-0 relative"
               >
                 <Image
@@ -68,8 +108,8 @@ export default function HeroCarousel({
                   alt={project.title}
                   fill
                   className="object-cover"
-                  priority={index === 0}
-                  loading={index === 0 ? undefined : 'lazy'}
+                  priority={index <= 2}
+                  loading={index <= 2 ? undefined : 'lazy'}
                   sizes="100vw"
                 />
               </div>
