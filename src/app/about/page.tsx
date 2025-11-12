@@ -65,7 +65,7 @@ export default function AboutPage() {
       </div>
 
       {/* Long-form Content Sections - per UI_COMPONENTS.md §11 */}
-      <div className="max-w-3xl mx-auto space-y-16 mb-16">
+      <div className="space-y-16 mb-16">
         {/* Section 1 */}
         <section>
           <h2 className="text-2xl font-medium mb-6">
