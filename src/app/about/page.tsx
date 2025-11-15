@@ -54,12 +54,14 @@ export default function AboutPage() {
 
         {/* Name and Titles - Aligned top with image */}
         <div className="flex flex-col justify-start text-center md:text-left pt-0 md:pt-4">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-light mb-8">PAUL BAKER</h1>
-          <div className="text-5xl md:text-6xl lg:text-7xl font-light space-y-3">
-            <p>Modelmaker</p>
-            <p>Designer</p>
-            <p>Food Sculptor</p>
-            <p>Sculptor</p>
+          <h1 className="font-light mb-8" style={{ fontSize: 'clamp(48px, 7vw, 91px)', lineHeight: '1.4' }}>
+            PAUL BAKER
+          </h1>
+          <div className="font-light space-y-3">
+            <p style={{ fontSize: 'clamp(40px, 6vw, 82px)', lineHeight: '1.4' }}>Modelmaker</p>
+            <p style={{ fontSize: 'clamp(40px, 6vw, 82px)', lineHeight: '1.4' }}>Designer</p>
+            <p style={{ fontSize: 'clamp(40px, 6vw, 82px)', lineHeight: '1.4' }}>Food Sculptor</p>
+            <p style={{ fontSize: 'clamp(40px, 6vw, 82px)', lineHeight: '1.4' }}>Sculptor</p>
           </div>
         </div>
       </div>
