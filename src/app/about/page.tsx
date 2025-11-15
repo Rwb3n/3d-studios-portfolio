@@ -45,7 +45,7 @@ export default function AboutPage() {
               src="/images/about/paul-baker.jpg"
               alt="Paul Baker, Modelmaker"
               fill
-              className="object-cover rounded-lg shadow-lg"
+              className="object-cover object-top rounded-lg shadow-lg"
               sizes="(max-width: 768px) 100vw, 50vw"
               priority
             />
@@ -54,8 +54,8 @@ export default function AboutPage() {
 
         {/* Name and Titles - Aligned top with image */}
         <div className="flex flex-col justify-start text-center md:text-left pt-0 md:pt-4">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">PAUL BAKER</h1>
-          <div className="text-xl md:text-2xl text-gray-700 space-y-3">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-light mb-8">PAUL BAKER</h1>
+          <div className="text-3xl md:text-4xl lg:text-5xl font-light space-y-3">
             <p>Modelmaker</p>
             <p>Designer</p>
             <p>Food Sculptor</p>
