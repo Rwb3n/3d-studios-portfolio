@@ -114,9 +114,9 @@ a:focus:not(:focus-visible) {
 /* See: src/components/ui/HeroCarousel.tsx */
 
 /* Homepage Intro Animations */
-@keyframes reveal-from-top {
+@keyframes reveal-from-bottom {
   from {
-    clip-path: inset(100% 0 0 0);
+    clip-path: inset(0 0 100% 0);
   }
   to {
     clip-path: inset(0 0 0 0);
@@ -158,21 +158,21 @@ a:focus:not(:focus-visible) {
 
 /* Animation Classes */
 .animate-carousel-reveal {
-  animation: reveal-from-top 0.8s ease-out 0.3s forwards;
-  clip-path: inset(100% 0 0 0); /* Start hidden */
+  animation: reveal-from-bottom 0.8s ease-out 1.4s forwards;
+  clip-path: inset(0 0 100% 0); /* Start hidden from bottom */
 }
 
 .animate-logo-in {
-  animation: slide-in-from-left 0.6s ease-out 1.2s forwards;
+  animation: slide-in-from-left 0.6s ease-out 2.3s forwards;
   opacity: 0;
 }
 
 .animate-nav-in {
-  animation: slide-in-from-right 0.6s ease-out 1.2s forwards;
+  animation: slide-in-from-right 0.6s ease-out 2.3s forwards;
   opacity: 0;
 }
 
 .animate-footer-in {
-  animation: slide-in-from-bottom 0.6s ease-out 1.2s forwards;
+  animation: slide-in-from-bottom 0.6s ease-out 2.3s forwards;
   opacity: 0;
 }

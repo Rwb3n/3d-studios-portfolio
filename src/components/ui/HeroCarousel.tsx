@@ -3,7 +3,7 @@
 // Infinite Horizontal Scroll - Featured Work Showcase
 // Continuously scrolls featured project images horizontally (marquee/ticker style)
 // Pauses on hover, clickable images, responsive design
-// Homepage intro: Reveals from top with clip-path animation
+// Homepage intro: Reveals from bottom with clip-path animation (1.4s delay)
 
 import Image from 'next/image'
 import Link from 'next/link'
