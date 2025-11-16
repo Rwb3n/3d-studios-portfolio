@@ -86,8 +86,8 @@
       "type": "image",
       "thumbnail": "/images/real-food/billy-connolly/thumbnail.jpg",
       "tags": [],
-      "featured": false,
-      "order": 5,
+      "featured": true,
+      "order": 2,
       "images": [
         {
           "url": "/images/real-food/billy-connolly/detail.jpg",

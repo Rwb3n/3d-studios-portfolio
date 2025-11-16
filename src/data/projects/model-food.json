@@ -281,8 +281,8 @@
       "type": "image",
       "thumbnail": "/images/model-food/jaffa-cake/thumbnail.jpg",
       "tags": [],
-      "featured": false,
-      "order": 15,
+      "featured": true,
+      "order": 1,
       "images": [
         {
           "url": "/images/model-food/jaffa-cake/detail.jpg",
@@ -319,8 +319,8 @@
       "type": "image",
       "thumbnail": "/images/model-food/creme-egg-on-toast/thumbnail.jpg",
       "tags": [],
-      "featured": false,
-      "order": 17,
+      "featured": true,
+      "order": 4,
       "images": [
         {
           "url": "/images/model-food/creme-egg-on-toast/detail.jpg",

@@ -41,8 +41,8 @@
       "type": "video",
       "thumbnail": "/images/moving-image/aldi-christmas/thumbnail.jpg",
       "tags": [],
-      "featured": false,
-      "order": 3,
+      "featured": true,
+      "order": 6,
       "video": {
         "url": "/videos/aldi-christmas.mp4",
         "poster": "/images/video-posters/aldi-christmas.jpg",

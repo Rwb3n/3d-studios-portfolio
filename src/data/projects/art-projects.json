@@ -104,8 +104,8 @@
       "type": "image",
       "thumbnail": "/images/art-projects/entropy/thumbnail.jpg",
       "tags": [],
-      "featured": false,
-      "order": 6,
+      "featured": true,
+      "order": 5,
       "images": [
         {
           "url": "/images/art-projects/entropy/detail.jpg",
