@@ -24,14 +24,14 @@ export default function HeroCarousel({ projects }: HeroCarouselProps) {
   return (
     <div className="relative w-full bg-gray-900 overflow-hidden">
       {/* Infinite Scroll Container */}
-      <div className="relative w-full aspect-[16/9] md:aspect-[21/9] lg:aspect-[24/9]">
+      <div className="relative w-full aspect-[16/9] md:aspect-[24/9] lg:aspect-[30/9]">
         {/* Scrolling Images */}
         <div className="absolute inset-0 flex animate-infinite-scroll hover:pause-animation">
           {duplicatedProjects.map((project, index) => (
             <Link
               key={`${project.id}-${index}`}
               href={`/work/${project.categorySlug}/${project.slug}`}
-              className="relative flex-shrink-0 w-[85vw] sm:w-[70vw] md:w-[55vw] lg:w-[45vw] xl:w-[40vw] h-full group"
+              className="relative flex-shrink-0 w-[85vw] sm:w-[70vw] md:w-[60vw] lg:w-[55vw] xl:w-[50vw] h-full group"
             >
               <Image
                 src={project.thumbnail}
