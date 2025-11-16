@@ -111,17 +111,18 @@ a:focus:not(:focus-visible) {
 }
 
 /* Infinite Horizontal Scroll Animation - Featured Work Showcase */
+/* Based on Cruip technique for truly seamless looping */
 @keyframes infinite-scroll {
-  0% {
+  from {
     transform: translateX(0);
   }
-  100% {
-    transform: translateX(-50%); /* Move by exactly half for seamless loop */
+  to {
+    transform: translateX(-100%); /* Move exactly one full list width */
   }
 }
 
 .animate-infinite-scroll {
-  animation: infinite-scroll 13s linear infinite; /* 13 seconds (1.5x faster than before) */
+  animation: infinite-scroll 26s linear infinite; /* 26s for full cycle (2x13s since we now move 2x distance) */
 }
 
 .pause-animation:hover {
