@@ -39,7 +39,7 @@ export default function HomePage() {
   return (
     <div>
       {/* Hero Carousel - UI_COMPONENTS.md §3 */}
-      <HeroCarousel projects={featuredProjects} autoScrollInterval={5000} />
+      <HeroCarousel projects={featuredProjects} />
     </div>
   )
 }
