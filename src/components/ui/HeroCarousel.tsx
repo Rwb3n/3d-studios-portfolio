@@ -31,7 +31,7 @@ export default function HeroCarousel({ projects }: HeroCarouselProps) {
             <Link
               key={`${project.id}-${index}`}
               href={`/work/${project.categorySlug}/${project.slug}`}
-              className="relative flex-shrink-0 w-[90vw] sm:w-[60vw] md:w-[45vw] lg:w-[33vw] xl:w-[28vw] h-full group"
+              className="relative flex-shrink-0 w-[85vw] sm:w-[70vw] md:w-[55vw] lg:w-[45vw] xl:w-[40vw] h-full group"
             >
               <Image
                 src={project.thumbnail}
