@@ -40,7 +40,7 @@ export default function HomePage() {
   return (
     <div className="relative">
       {/* Background Image - Static layer behind carousel */}
-      <div className="fixed inset-0 -z-10">
+      <div className="fixed inset-0 -z-10 bg-white">
         <Image
           src="/images/3d_home_01.png"
           alt="3D Studios Background"
