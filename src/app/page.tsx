@@ -3,6 +3,7 @@
 
 import { getFeaturedProjects } from '@/lib/data'
 import HeroCarousel from '@/components/ui/HeroCarousel'
+import Image from 'next/image'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -37,7 +38,19 @@ export default function HomePage() {
   const featuredProjects = getFeaturedProjects(4) // Get 4 for carousel
 
   return (
-    <div>
+    <div className="relative">
+      {/* Background Image - Static layer behind carousel */}
+      <div className="fixed inset-0 -z-10">
+        <Image
+          src="/images/3d_home_01.png"
+          alt="3D Studios Background"
+          fill
+          className="object-cover"
+          priority
+          quality={90}
+        />
+      </div>
+
       {/* Hero Carousel - UI_COMPONENTS.md §3 */}
       <HeroCarousel projects={featuredProjects} />
     </div>

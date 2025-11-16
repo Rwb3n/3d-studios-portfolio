@@ -112,3 +112,67 @@ a:focus:not(:focus-visible) {
 
 /* Infinite Horizontal Scroll - Now handled by Embla Carousel library */
 /* See: src/components/ui/HeroCarousel.tsx */
+
+/* Homepage Intro Animations */
+@keyframes reveal-from-top {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes slide-in-from-left {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-from-right {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-from-bottom {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Animation Classes */
+.animate-carousel-reveal {
+  animation: reveal-from-top 0.8s ease-out 0.3s forwards;
+  clip-path: inset(100% 0 0 0); /* Start hidden */
+}
+
+.animate-logo-in {
+  animation: slide-in-from-left 0.6s ease-out 1.2s forwards;
+  opacity: 0;
+}
+
+.animate-nav-in {
+  animation: slide-in-from-right 0.6s ease-out 1.2s forwards;
+  opacity: 0;
+}
+
+.animate-footer-in {
+  animation: slide-in-from-bottom 0.6s ease-out 1.2s forwards;
+  opacity: 0;
+}

@@ -3,6 +3,7 @@
 // Infinite Horizontal Scroll - Featured Work Showcase
 // Continuously scrolls featured project images horizontally (marquee/ticker style)
 // Pauses on hover, clickable images, responsive design
+// Homepage intro: Reveals from top with clip-path animation
 
 import Image from 'next/image'
 import Link from 'next/link'
@@ -19,9 +20,21 @@ export default function HeroCarousel({ projects }: HeroCarouselProps) {
   }
 
   const [isPaused, setIsPaused] = useState(false)
+  const [hasAnimated, setHasAnimated] = useState(true) // Default to no animation (for SSR)
   const containerRef = useRef<HTMLDivElement>(null)
   const scrollPositionRef = useRef(0)
   const animationRef = useRef<number | null>(null)
+
+  // Check if intro animation should play (once per session)
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const animated = sessionStorage.getItem('homepage-animated')
+      if (!animated) {
+        sessionStorage.setItem('homepage-animated', 'true')
+        setHasAnimated(false) // Will animate
+      }
+    }
+  }, [])
 
   useEffect(() => {
     const container = containerRef.current
@@ -83,7 +96,7 @@ export default function HeroCarousel({ projects }: HeroCarouselProps) {
   )
 
   return (
-    <div className="relative w-full bg-gray-900 overflow-hidden">
+    <div className={`relative w-full bg-gray-900 overflow-hidden ${!hasAnimated ? 'animate-carousel-reveal' : ''}`}>
       {/* Infinite Scroll Container */}
       <div className="relative w-full aspect-[16/9] md:aspect-[24/9] lg:aspect-[30/9]">
         {/* Scrolling Images - Two identical lists for seamless loop */}

@@ -6,6 +6,7 @@
 
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import Logo from './Logo'
 import { getCategories } from '@/lib/data'
 
@@ -13,7 +14,20 @@ export default function Header() {
   const [workDropdownOpen, setWorkDropdownOpen] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [mobileWorkExpanded, setMobileWorkExpanded] = useState(false)
+  const [hasAnimated, setHasAnimated] = useState(true) // Default to no animation
+  const pathname = usePathname()
   const categories = getCategories()
+  const isHomepage = pathname === '/'
+
+  // Check if intro animation should play (homepage only, once per session)
+  useEffect(() => {
+    if (isHomepage && typeof window !== 'undefined') {
+      const animated = sessionStorage.getItem('homepage-animated')
+      if (!animated) {
+        setHasAnimated(false) // Will animate
+      }
+    }
+  }, [isHomepage])
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
@@ -48,9 +62,11 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 py-0">
         <div className="flex items-center justify-between">
           {/* Logo - Left aligned */}
-          <Link href="/">
-            <Logo width={240} height={166} />
-          </Link>
+          <div className={isHomepage && !hasAnimated ? 'animate-logo-in' : ''}>
+            <Link href="/">
+              <Logo width={240} height={166} />
+            </Link>
+          </div>
 
           {/* Hamburger Button - Mobile only (< 1024px) */}
           <button
@@ -74,7 +90,7 @@ export default function Header() {
           </button>
 
           {/* Desktop Navigation - Hidden on mobile (< 1024px) */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className={`hidden lg:flex items-center gap-8 ${isHomepage && !hasAnimated ? 'animate-nav-in' : ''}`}>
             {/* WORK Dropdown */}
             <div className="relative">
               <button
