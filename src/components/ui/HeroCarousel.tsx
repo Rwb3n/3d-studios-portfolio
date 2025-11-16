@@ -18,8 +18,8 @@ export default function HeroCarousel({ projects }: HeroCarouselProps) {
   }
 
   // Duplicate projects array for seamless infinite loop
-  // We'll render the array 3 times to ensure smooth continuous scroll
-  const duplicatedProjects = [...projects, ...projects, ...projects]
+  // Render array 2 times - animation moves exactly 50% for perfect loop
+  const duplicatedProjects = [...projects, ...projects]
 
   return (
     <div className="relative w-full bg-gray-900 overflow-hidden">
