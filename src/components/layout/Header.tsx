@@ -58,7 +58,7 @@ export default function Header() {
   }
 
   return (
-    <header className="w-full bg-white border-b border-gray-300">
+    <header className="w-full bg-white border-b border-gray-300 relative z-50">
       <div className="max-w-7xl mx-auto px-4 py-0">
         <div className="flex items-center justify-between">
           {/* Logo - Left aligned */}
