@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 }
 
 export default function HomePage() {
-  const featuredProjects = getFeaturedProjects(4) // Get 4 for carousel
+  const featuredProjects = getFeaturedProjects(6) // Get 6 for carousel
 
   return (
     <div className="relative">

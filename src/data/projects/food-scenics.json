@@ -10,7 +10,7 @@
       "type": "image",
       "thumbnail": "/images/food-scenics/taj-mahal/thumbnail.jpg",
       "tags": [],
-      "featured": true,
+      "featured": false,
       "order": 1,
       "images": [
         {
@@ -28,8 +28,8 @@
       "type": "image",
       "thumbnail": "/images/food-scenics/coralscape/thumbnail.jpg",
       "tags": [],
-      "featured": false,
-      "order": 2,
+      "featured": true,
+      "order": 3,
       "images": [
         {
           "url": "/images/food-scenics/coralscape/detail.jpg",

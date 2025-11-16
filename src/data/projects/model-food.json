@@ -9,7 +9,7 @@
       "type": "image",
       "thumbnail": "/images/model-food/alpro/thumbnail.jpg",
       "tags": [],
-      "featured": true,
+      "featured": false,
       "order": 1,
       "images": [
         {
