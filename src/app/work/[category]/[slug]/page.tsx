@@ -171,13 +171,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         {prev ? (
           <Link
             href={`/work/${categorySlug}/${prev.slug}`}
-            className="px-8 py-3 bg-black text-white hover:bg-gray-800 transition-all duration-150 hover:scale-105 transform font-medium"
+            className="px-4 md:px-8 py-3 bg-black text-white hover:bg-gray-800 transition-all duration-150 hover:scale-105 transform font-medium"
           >
-            ← Previous
+            ← <span className="hidden md:inline">Previous</span>
           </Link>
         ) : (
-          <div className="px-8 py-3 bg-gray-300 text-gray-500 cursor-not-allowed font-medium">
-            ← Previous
+          <div className="px-4 md:px-8 py-3 bg-gray-300 text-gray-500 cursor-not-allowed font-medium">
+            ← <span className="hidden md:inline">Previous</span>
           </div>
         )}
 
@@ -193,13 +193,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         {next ? (
           <Link
             href={`/work/${categorySlug}/${next.slug}`}
-            className="px-8 py-3 bg-black text-white hover:bg-gray-800 transition-all duration-150 hover:scale-105 transform font-medium"
+            className="px-4 md:px-8 py-3 bg-black text-white hover:bg-gray-800 transition-all duration-150 hover:scale-105 transform font-medium"
           >
-            Next →
+            <span className="hidden md:inline">Next</span> →
           </Link>
         ) : (
-          <div className="px-8 py-3 bg-gray-300 text-gray-500 cursor-not-allowed font-medium">
-            Next →
+          <div className="px-4 md:px-8 py-3 bg-gray-300 text-gray-500 cursor-not-allowed font-medium">
+            <span className="hidden md:inline">Next</span> →
           </div>
         )}
       </nav>

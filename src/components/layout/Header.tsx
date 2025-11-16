@@ -45,7 +45,7 @@ export default function Header() {
 
   return (
     <header className="w-full bg-white border-b border-gray-300">
-      <div className="max-w-7xl mx-auto px-4 py-4">
+      <div className="max-w-7xl mx-auto px-4 py-2">
         <div className="flex items-center justify-between">
           {/* Logo - Left aligned */}
           <Link href="/">

@@ -129,14 +129,16 @@ export default function HeroCarousel({
               href={`/work/${currentProject.categorySlug}/${currentProject.slug}`}
               className="inline-block group"
             >
-              <h2 className="text-white text-2xl md:text-3xl lg:text-4xl font-bold mb-2 group-hover:underline">
-                {currentProject.title}
-              </h2>
-              {currentProject.client && (
-                <p className="text-white/90 text-lg md:text-xl">
-                  {currentProject.client}
-                </p>
-              )}
+              <div className="inline-block bg-black/60 backdrop-blur-sm px-4 py-2 rounded">
+                <h2 className="text-white text-2xl md:text-3xl lg:text-4xl font-bold mb-1 group-hover:underline">
+                  {currentProject.title}
+                </h2>
+                {currentProject.client && (
+                  <p className="text-white/90 text-lg md:text-xl">
+                    {currentProject.client}
+                  </p>
+                )}
+              </div>
             </Link>
           </div>
         </div>
