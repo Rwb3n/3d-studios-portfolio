@@ -45,7 +45,7 @@ export default function HomePage() {
           src="/images/3d_home_01.png"
           alt="3D Studios Background"
           fill
-          className="object-cover"
+          className="object-contain"
           priority
           quality={90}
         />
