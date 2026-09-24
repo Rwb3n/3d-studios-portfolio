@@ -163,41 +163,42 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </>
       )}
 
-      {/* Previous/Next Navigation - per UI_COMPONENTS.md §8-9 */}
-      <nav className="flex justify-between items-center border-t border-gray-300 pt-10 mt-16">
+      {/* Previous/Next Navigation - per UI_COMPONENTS.md §8-9
+          Mobile: back link on its own row above equal-width Prev/Next buttons */}
+      <nav className="grid grid-cols-2 md:flex md:justify-between md:items-center gap-4 border-t border-gray-300 pt-10 mt-16">
+        {/* Back to Category */}
+        <Link
+          href={`/work/${categorySlug}`}
+          className="col-span-2 md:order-2 text-center text-base md:text-lg hover:underline uppercase tracking-wide"
+        >
+          Back to {categorySlug.replace(/-/g, ' ')}
+        </Link>
+
         {/* Previous Button */}
         {prev ? (
           <Link
             href={`/work/${categorySlug}/${prev.slug}`}
-            className="px-4 md:px-8 py-3 bg-black text-white hover:bg-gray-800 transition-all duration-150 hover:scale-105 transform font-medium"
+            className="md:order-1 text-center px-4 md:px-8 py-3 bg-black text-white hover:bg-gray-800 transition-all duration-150 hover:scale-105 transform font-medium"
           >
-            ← <span className="hidden md:inline">Previous</span>
+            ← Previous
           </Link>
         ) : (
-          <div className="px-4 md:px-8 py-3 bg-gray-300 text-gray-500 cursor-not-allowed font-medium">
-            ← <span className="hidden md:inline">Previous</span>
+          <div className="md:order-1 text-center px-4 md:px-8 py-3 bg-gray-300 text-gray-500 cursor-not-allowed font-medium" aria-disabled="true">
+            ← Previous
           </div>
         )}
-
-        {/* Back to Category */}
-        <Link
-          href={`/work/${categorySlug}`}
-          className="text-lg hover:underline uppercase tracking-wide"
-        >
-          Back to {categorySlug.replace(/-/g, ' ')}
-        </Link>
 
         {/* Next Button */}
         {next ? (
           <Link
             href={`/work/${categorySlug}/${next.slug}`}
-            className="px-4 md:px-8 py-3 bg-black text-white hover:bg-gray-800 transition-all duration-150 hover:scale-105 transform font-medium"
+            className="md:order-3 text-center px-4 md:px-8 py-3 bg-black text-white hover:bg-gray-800 transition-all duration-150 hover:scale-105 transform font-medium"
           >
-            <span className="hidden md:inline">Next</span> →
+            Next →
           </Link>
         ) : (
-          <div className="px-4 md:px-8 py-3 bg-gray-300 text-gray-500 cursor-not-allowed font-medium">
-            <span className="hidden md:inline">Next</span> →
+          <div className="md:order-3 text-center px-4 md:px-8 py-3 bg-gray-300 text-gray-500 cursor-not-allowed font-medium" aria-disabled="true">
+            Next →
           </div>
         )}
       </nav>
