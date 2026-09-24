@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Archivo } from 'next/font/google'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+import PageTransition from '@/components/layout/PageTransition'
 import { getCategories } from '@/lib/data'
 import './globals.css'
 
@@ -39,7 +40,9 @@ export default function RootLayout({
       </head>
       <body className="flex flex-col min-h-screen">
         <Header categories={navCategories} />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1">
+          <PageTransition>{children}</PageTransition>
+        </main>
         <Footer />
       </body>
     </html>

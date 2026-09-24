@@ -107,18 +107,21 @@ export default function Header({ categories }: HeaderProps) {
                 onClick={() => setWorkDropdownOpen(!workDropdownOpen)}
                 aria-expanded={workDropdownOpen}
                 aria-haspopup="true"
-                className="text-black hover:text-gray-600 font-medium flex items-center gap-1"
+                className="text-black font-medium flex items-center gap-1 relative after:absolute after:left-0 after:-bottom-1 after:h-px after:w-full after:bg-current after:origin-left after:scale-x-0 after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100"
               >
                 WORK
-                <span className="text-xs">▼</span>
+                <span className={`text-xs transition-transform duration-300 ${workDropdownOpen ? 'rotate-180' : ''}`}>▼</span>
               </button>
 
-              {/* Dropdown - hidden when closed so its links are not focusable or prefetched */}
+              {/* Dropdown - display:none when closed (links not focusable or prefetched);
+                  transition-discrete + starting: animate it in and out of display:none */}
               <div className={`absolute top-full left-0 mt-2 bg-white border border-gray-300 shadow-lg min-w-[200px] z-50
-                               ${workDropdownOpen ? 'block' : 'hidden'}`}>
+                               transition-[opacity,translate,display] duration-200 ease-out transition-discrete
+                               starting:opacity-0 starting:-translate-y-1
+                               ${workDropdownOpen ? 'block opacity-100 translate-y-0' : 'hidden opacity-0 -translate-y-1'}`}>
                   <Link
                     href="/work"
-                    className="block px-4 py-2 hover:bg-gray-100 text-sm uppercase"
+                    className="block px-4 py-2 hover:bg-gray-100 transition-colors text-sm uppercase"
                     onClick={() => setWorkDropdownOpen(false)}
                   >
                     All Work
@@ -127,7 +130,7 @@ export default function Header({ categories }: HeaderProps) {
                     <Link
                       key={cat.id}
                       href={`/work/${cat.slug}`}
-                      className="block px-4 py-2 hover:bg-gray-100 text-sm uppercase"
+                      className="block px-4 py-2 hover:bg-gray-100 transition-colors text-sm uppercase"
                       onClick={() => setWorkDropdownOpen(false)}
                     >
                       {cat.name}
@@ -138,31 +141,40 @@ export default function Header({ categories }: HeaderProps) {
 
             <Link
               href="/about"
-              className="text-black hover:text-gray-600 font-medium uppercase"
+              className="text-black font-medium uppercase relative after:absolute after:left-0 after:-bottom-1 after:h-px after:w-full after:bg-current after:origin-left after:scale-x-0 after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100"
             >
               About
             </Link>
 
             <a
               href="mailto:paul@3d-studios.co.uk"
-              className="text-black hover:text-gray-600 font-medium uppercase"
+              className="text-black font-medium uppercase relative after:absolute after:left-0 after:-bottom-1 after:h-px after:w-full after:bg-current after:origin-left after:scale-x-0 after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100"
             >
               Contact
             </a>
           </nav>
 
-          {/* Mobile Menu - Slide-in drawer from right */}
-          {mobileMenuOpen && (
-            <>
+          {/* Mobile Menu - Slide-in drawer from right. Always rendered; display:none
+              when closed, animated in and out via transition-discrete + starting: */}
+          <>
               {/* Backdrop */}
               <div
-                className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+                className={`fixed inset-0 bg-black/50 z-40 lg:hidden
+                            transition-[opacity,display] duration-300 transition-discrete starting:opacity-0
+                            ${mobileMenuOpen ? 'block opacity-100' : 'hidden opacity-0'}`}
                 onClick={closeMobileMenu}
                 aria-hidden="true"
               />
 
               {/* Drawer */}
-              <div className="fixed inset-y-0 right-0 w-3/4 max-w-sm bg-white z-50 overflow-y-auto shadow-2xl lg:hidden">
+              <div
+                role="dialog"
+                aria-modal="true"
+                aria-label="Menu"
+                className={`fixed inset-y-0 right-0 w-3/4 max-w-sm bg-white z-50 overflow-y-auto shadow-2xl lg:hidden
+                            transition-[translate,display] duration-300 ease-out transition-discrete starting:translate-x-full
+                            ${mobileMenuOpen ? 'block translate-x-0' : 'hidden translate-x-full'}`}
+              >
                 {/* Header with Close Button */}
                 <div className="flex items-center justify-between p-4 border-b border-gray-300">
                   <span className="text-lg font-bold">MENU</span>
@@ -193,6 +205,7 @@ export default function Header({ categories }: HeaderProps) {
                   <div className="border-b border-gray-200">
                     <button
                       onClick={() => setMobileWorkExpanded(!mobileWorkExpanded)}
+                      aria-expanded={mobileWorkExpanded}
                       className="w-full flex items-center justify-between px-6 py-4 text-left font-medium uppercase hover:bg-gray-50 transition-colors min-h-[44px]"
                     >
                       WORK
@@ -213,9 +226,14 @@ export default function Header({ categories }: HeaderProps) {
                       </svg>
                     </button>
 
-                    {/* WORK Submenu */}
-                    {mobileWorkExpanded && (
-                      <div className="bg-gray-50">
+                    {/* WORK Submenu - animated height via grid rows; inert while collapsed */}
+                    <div
+                      className={`grid transition-[grid-template-rows] duration-300 ease-out ${
+                        mobileWorkExpanded ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+                      }`}
+                      inert={!mobileWorkExpanded}
+                    >
+                      <div className="overflow-hidden bg-gray-50">
                         <Link
                           href="/work"
                           className="block px-8 py-3 text-sm uppercase hover:bg-gray-100 transition-colors min-h-[44px] flex items-center"
@@ -234,7 +252,7 @@ export default function Header({ categories }: HeaderProps) {
                           </Link>
                         ))}
                       </div>
-                    )}
+                    </div>
                   </div>
 
                   {/* ABOUT Link */}
@@ -256,8 +274,7 @@ export default function Header({ categories }: HeaderProps) {
                   </a>
                 </nav>
               </div>
-            </>
-          )}
+          </>
         </div>
       </div>
     </header>

@@ -89,7 +89,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           <Link
             key={project.id}
             href={`/work/${categorySlug}/${project.slug}`}
-            className="group"
+            className="group reveal"
           >
             {/* Project Image (4:3 aspect ratio) */}
             <div className="relative w-full aspect-[4/3] bg-gray-200 overflow-hidden mb-3">
@@ -97,14 +97,14 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                 src={project.thumbnail}
                 alt={project.title}
                 fill
-                className="object-cover group-hover:scale-105 transition-transform duration-300"
+                className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 loading="lazy"
               />
             </div>
 
             {/* Project Title - Below image, centered, H3 */}
-            <h3 className="text-center text-lg font-medium group-hover:text-gray-600 transition-colors">
+            <h3 className="text-center text-lg font-medium transition-colors duration-300 group-hover:text-gray-500">
               {project.title}
             </h3>
           </Link>

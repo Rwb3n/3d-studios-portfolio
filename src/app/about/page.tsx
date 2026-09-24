@@ -67,7 +67,7 @@ export default function AboutPage() {
       {/* Long-form Content Sections - per UI_COMPONENTS.md §11 */}
       <div className="space-y-16 mb-16 max-w-3xl">
         {/* Section 1 */}
-        <section>
+        <section className="reveal">
           <h2 className="text-2xl font-medium mb-6">
             Crafting perfection for over 40 years
           </h2>
@@ -80,7 +80,7 @@ export default function AboutPage() {
         </section>
 
         {/* Section 2 */}
-        <section>
+        <section className="reveal">
           <h2 className="text-2xl font-medium mb-6">
             Our specialty: Ice cream and chocolate that never melts
           </h2>
@@ -99,7 +99,7 @@ export default function AboutPage() {
         </section>
 
         {/* Section 3 */}
-        <section>
+        <section className="reveal">
           <h2 className="text-2xl font-medium mb-6">
             Global Reach with the local touch
           </h2>
@@ -111,7 +111,7 @@ export default function AboutPage() {
         </section>
 
         {/* Section 4 */}
-        <section>
+        <section className="reveal">
           <h2 className="text-2xl font-medium mb-6">
             Beyond food: Expanding our creative palette
           </h2>
@@ -134,7 +134,7 @@ export default function AboutPage() {
         </section>
 
         {/* Section 5 */}
-        <section>
+        <section className="reveal">
           <h2 className="text-2xl font-medium mb-6">
             Pushing the boundaries of creativity
           </h2>
@@ -162,7 +162,7 @@ export default function AboutPage() {
         </section>
 
         {/* Section 6 - Closing */}
-        <section>
+        <section className="reveal">
           <p className="text-lg leading-relaxed mb-4">
             We pride ourselves at 3D Studios that we can create
             anything................. if you have the budget!
