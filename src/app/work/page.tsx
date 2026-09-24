@@ -18,8 +18,6 @@ export const metadata: Metadata = {
     images: [
       {
         url: 'https://3d-studios.co.uk/images/model-food/alpro/thumbnail.jpg',
-        width: 1200,
-        height: 630,
         alt: '3D Studios Portfolio - Modelmaking Projects',
       },
     ],
@@ -54,7 +52,7 @@ export default function WorkPage() {
                 alt={category.name}
                 fill
                 className="object-cover transition-transform duration-300 group-hover:scale-105"
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 600px"
                 loading="lazy"
               />
 

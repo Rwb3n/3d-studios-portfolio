@@ -69,8 +69,6 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
       images: [
         {
           url: imageUrl,
-          width: 1200,
-          height: 630,
           alt: project.title,
         },
       ],
@@ -157,7 +155,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 alt={project.title}
                 fill
                 className="object-contain"
-                sizes="(max-width: 1280px) 100vw, 1280px"
+                sizes="(max-width: 1024px) 100vw, 976px"
                 priority
               />
             </div>

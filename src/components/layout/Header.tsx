@@ -5,29 +5,39 @@
 'use client'
 
 import Link from 'next/link'
-import { useState, useEffect } from 'react'
-import { usePathname } from 'next/navigation'
+import { useState, useEffect, useRef } from 'react'
 import Logo from './Logo'
-import { getCategories } from '@/lib/data'
+import type { Category } from '@/types'
 
-export default function Header() {
+interface HeaderProps {
+  categories: Pick<Category, 'id' | 'name' | 'slug'>[]
+}
+
+export default function Header({ categories }: HeaderProps) {
   const [workDropdownOpen, setWorkDropdownOpen] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [mobileWorkExpanded, setMobileWorkExpanded] = useState(false)
-  const [hasAnimated, setHasAnimated] = useState(true) // Default to no animation
-  const pathname = usePathname()
-  const categories = getCategories()
-  const isHomepage = pathname === '/'
+  const workDropdownRef = useRef<HTMLDivElement>(null)
 
-  // Check if intro animation should play (homepage only, once per session)
+  // Close WORK dropdown on outside click or Escape
   useEffect(() => {
-    if (isHomepage && typeof window !== 'undefined') {
-      const animated = sessionStorage.getItem('homepage-animated')
-      if (!animated) {
-        setHasAnimated(false) // Will animate
+    if (!workDropdownOpen) return
+
+    const handleClick = (e: MouseEvent) => {
+      if (!workDropdownRef.current?.contains(e.target as Node)) {
+        setWorkDropdownOpen(false)
       }
     }
-  }, [isHomepage])
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setWorkDropdownOpen(false)
+    }
+    document.addEventListener('mousedown', handleClick)
+    document.addEventListener('keydown', handleEscape)
+    return () => {
+      document.removeEventListener('mousedown', handleClick)
+      document.removeEventListener('keydown', handleEscape)
+    }
+  }, [workDropdownOpen])
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
@@ -62,7 +72,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 py-0">
         <div className="flex items-center justify-between">
           {/* Logo - Left aligned */}
-          <div className={isHomepage && !hasAnimated ? 'animate-logo-in' : ''}>
+          <div className="intro-logo">
             <Link href="/">
               <Logo width={240} height={166} />
             </Link>
@@ -90,21 +100,22 @@ export default function Header() {
           </button>
 
           {/* Desktop Navigation - Hidden on mobile (< 1024px) */}
-          <nav className={`hidden lg:flex items-center gap-8 ${isHomepage && !hasAnimated ? 'animate-nav-in' : ''}`}>
+          <nav className="hidden lg:flex items-center gap-8 intro-nav">
             {/* WORK Dropdown */}
-            <div className="relative">
+            <div className="relative" ref={workDropdownRef}>
               <button
                 onClick={() => setWorkDropdownOpen(!workDropdownOpen)}
+                aria-expanded={workDropdownOpen}
+                aria-haspopup="true"
                 className="text-black hover:text-gray-600 font-medium flex items-center gap-1"
               >
                 WORK
                 <span className="text-xs">▼</span>
               </button>
 
-              {/* Dropdown with fade transition */}
+              {/* Dropdown - hidden when closed so its links are not focusable or prefetched */}
               <div className={`absolute top-full left-0 mt-2 bg-white border border-gray-300 shadow-lg min-w-[200px] z-50
-                               transition-opacity duration-200
-                               ${workDropdownOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+                               ${workDropdownOpen ? 'block' : 'hidden'}`}>
                   <Link
                     href="/work"
                     className="block px-4 py-2 hover:bg-gray-100 text-sm uppercase"

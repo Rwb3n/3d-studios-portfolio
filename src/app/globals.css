@@ -156,23 +156,50 @@ a:focus:not(:focus-visible) {
   }
 }
 
-/* Animation Classes */
-.animate-carousel-reveal {
-  animation: reveal-from-bottom 0.8s ease-out 1.4s forwards;
-  clip-path: inset(0 0 100% 0); /* Start hidden from bottom */
+/* Hero marquee - track holds two identical lists, so -50% is one full loop */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
-.animate-logo-in {
-  animation: slide-in-from-left 0.6s ease-out 2.3s forwards;
-  opacity: 0;
+.marquee-track {
+  animation: marquee linear infinite;
+  will-change: transform;
 }
 
-.animate-nav-in {
-  animation: slide-in-from-right 0.6s ease-out 2.3s forwards;
-  opacity: 0;
+.marquee-track:hover {
+  animation-play-state: paused;
 }
 
-.animate-footer-in {
-  animation: slide-in-from-bottom 0.6s ease-out 2.3s forwards;
-  opacity: 0;
+/* Intro animation classes - only active while <html data-intro> is set.
+   The attribute is set before first paint by the inline script in layout.tsx
+   (first homepage visit per session), so there is no flash of content. */
+html[data-intro] .intro-carousel {
+  animation: reveal-from-bottom 0.8s ease-out 1.4s both;
+}
+
+html[data-intro] .intro-logo {
+  animation: slide-in-from-left 0.6s ease-out 2.3s both;
+}
+
+html[data-intro] .intro-nav {
+  animation: slide-in-from-right 0.6s ease-out 2.3s both;
+}
+
+html[data-intro] .intro-footer {
+  animation: slide-in-from-bottom 0.6s ease-out 2.3s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track,
+  html[data-intro] .intro-carousel,
+  html[data-intro] .intro-logo,
+  html[data-intro] .intro-nav,
+  html[data-intro] .intro-footer {
+    animation: none;
+  }
 }

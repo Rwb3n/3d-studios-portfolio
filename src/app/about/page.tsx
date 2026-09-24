@@ -17,8 +17,6 @@ export const metadata: Metadata = {
     images: [
       {
         url: 'https://3d-studios.co.uk/images/about/paul-baker.jpg',
-        width: 1200,
-        height: 630,
         alt: 'Paul Baker - Professional Modelmaker and Sculptor',
       },
     ],

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Archivo } from 'next/font/google'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+import { getCategories } from '@/lib/data'
 import './globals.css'
 
 const archivo = Archivo({
@@ -18,15 +19,26 @@ export const metadata: Metadata = {
     'Probably the best modelmakers in the world. Over 40 years of experience creating model food, props, and displays for advertising and retail.',
 }
 
+// First homepage visit per session: flag <html> before first paint so the
+// intro animations in globals.css run without a flash of visible content.
+// The flag is removed once the animations have finished.
+const introScript = `try{if(location.pathname==='/'&&!sessionStorage.getItem('homepage-animated')){sessionStorage.setItem('homepage-animated','true');var d=document.documentElement;d.setAttribute('data-intro','');setTimeout(function(){d.removeAttribute('data-intro')},4000)}}catch(e){}`
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  // Only the fields the nav needs - keeps project data out of the client bundle
+  const navCategories = getCategories().map(({ id, name, slug }) => ({ id, name, slug }))
+
   return (
-    <html lang="en" className={archivo.variable}>
+    <html lang="en" className={archivo.variable} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: introScript }} />
+      </head>
       <body className="flex flex-col min-h-screen">
-        <Header />
+        <Header categories={navCategories} />
         <main className="flex-1">{children}</main>
         <Footer />
       </body>
