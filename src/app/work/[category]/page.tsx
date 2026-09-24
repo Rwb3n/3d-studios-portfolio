@@ -81,7 +81,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   return (
     <div className="max-w-7xl mx-auto px-6 py-16">
       {/* Category Title */}
-      <h1 className="text-5xl font-bold text-center mb-16 uppercase tracking-wide">{category.name}</h1>
+      <h1 className="text-center text-balance mb-16 uppercase tracking-wide">{category.name}</h1>
 
       {/* Portfolio Grid - per UI_COMPONENTS.md §6 */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">

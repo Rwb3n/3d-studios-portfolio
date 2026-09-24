@@ -42,42 +42,41 @@
   --max-w-container: var(--max-width);
 }
 
-body {
-  background: var(--background);
-  color: var(--text);
-  font-family: var(--font-sans);
-  font-size: var(--font-size-body);
-  line-height: var(--line-height-relaxed);
-  margin: 0;
-  padding: 0;
-}
+/* Element defaults live in the base layer so Tailwind utilities can override them.
+   (Unlayered, these rules beat every utility class on h1-h3 and p.) */
+@layer base {
+  body {
+    background: var(--background);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-relaxed);
+    margin: 0;
+    padding: 0;
+  }
 
-/* Typography Defaults - Lighter weights for refined appearance */
-h1 {
-  font-size: var(--font-size-h1);
-  font-weight: 300;
-  line-height: var(--line-height-tight);
-  color: var(--text);
-}
+  /* Typography Defaults - Lighter weights for refined appearance */
+  h1 {
+    font-size: clamp(2.25rem, 1.5rem + 3vw, var(--font-size-h1));
+    font-weight: 300;
+    line-height: var(--line-height-tight);
+  }
 
-h2 {
-  font-size: var(--font-size-h2);
-  font-weight: 400;
-  line-height: var(--line-height-normal);
-  color: var(--text);
-}
+  h2 {
+    font-size: var(--font-size-h2);
+    font-weight: 400;
+    line-height: var(--line-height-normal);
+  }
 
-h3 {
-  font-size: var(--font-size-h3);
-  font-weight: 400;
-  line-height: var(--line-height-normal);
-  color: var(--text);
-}
+  h3 {
+    font-size: var(--font-size-h3);
+    font-weight: 400;
+    line-height: var(--line-height-normal);
+  }
 
-p {
-  font-size: var(--font-size-body);
-  line-height: var(--line-height-relaxed);
-  color: var(--text);
+  p {
+    line-height: var(--line-height-relaxed);
+  }
 }
 
 /* Keyboard Navigation - Accessibility Focus Styles */

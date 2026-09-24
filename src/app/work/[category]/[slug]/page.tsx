@@ -11,6 +11,7 @@ import {
   getAdjacentProjects,
   getCategory,
 } from '@/lib/data'
+import { getImageSize } from '@/lib/images'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 
@@ -106,6 +107,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   // Determine if this is an image or video project
   const isVideo = project.type === 'video'
+  const imageSize = getImageSize(project.thumbnail) ?? { width: 4, height: 3 }
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-16">
@@ -113,7 +115,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       {isVideo ? (
         // Video Project - per UI_COMPONENTS.md §9
         <>
-          <h1 className="text-5xl font-bold text-center mb-12">{project.title}</h1>
+          <h1 className="text-center text-balance mb-12">{project.title}</h1>
 
           {/* Video Player */}
           <div className="mb-12">
@@ -130,7 +132,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         // Image Project - per UI_COMPONENTS.md §8
         <>
           {/* Title */}
-          <h1 className="text-5xl font-bold text-center mb-4">{project.title}</h1>
+          <h1 className="text-center text-balance mb-4">{project.title}</h1>
 
           {/* Subtitle/Client - H2 */}
           {project.client && (
@@ -147,9 +149,15 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </p>
           )}
 
-          {/* Image Display - Using thumbnail since detail images don't exist */}
+          {/* Image Display - real aspect ratio, capped at 75% of viewport height */}
           <div className="mb-12">
-            <div className="relative w-full aspect-[4/3] bg-gray-100">
+            <div
+              className="relative mx-auto bg-gray-100"
+              style={{
+                aspectRatio: `${imageSize.width} / ${imageSize.height}`,
+                width: `min(100%, calc(75vh * ${imageSize.width / imageSize.height}))`,
+              }}
+            >
               <Image
                 src={project.thumbnail}
                 alt={project.title}
