@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Archivo } from 'next/font/google'
+import { Archivo, Courier_Prime } from 'next/font/google'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import PageTransition from '@/components/layout/PageTransition'
@@ -12,6 +12,14 @@ const archivo = Archivo({
   style: ['normal', 'italic'],
   display: 'swap',
   variable: '--font-archivo',
+})
+
+// Typewriter face for job-ticket credits on project pages
+const courier = Courier_Prime({
+  subsets: ['latin'],
+  weight: ['400'],
+  display: 'swap',
+  variable: '--font-courier',
 })
 
 export const metadata: Metadata = {
@@ -34,7 +42,7 @@ export default function RootLayout({
   const navCategories = getCategories().map(({ id, name, slug }) => ({ id, name, slug }))
 
   return (
-    <html lang="en" className={archivo.variable} suppressHydrationWarning>
+    <html lang="en" className={`${archivo.variable} ${courier.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: introScript }} />
       </head>

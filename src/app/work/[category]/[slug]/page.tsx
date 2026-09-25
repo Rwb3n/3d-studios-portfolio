@@ -2,8 +2,9 @@
 // Two variants: Image projects (§8) and Video projects (§9)
 
 import Link from 'next/link'
-import Image from 'next/image'
 import VideoPlayer from '@/components/ui/VideoPlayer'
+import JobTicket from '@/components/ui/JobTicket'
+import ZoomableImage from '@/components/ui/ZoomableImage'
 import {
   getCategories,
   getProjectsByCategory,
@@ -109,13 +110,27 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const isVideo = project.type === 'video'
   const imageSize = getImageSize(project.thumbnail) ?? { width: 4, height: 3 }
 
+  // Job ticket: position within the category, like a workshop docket number
+  const categoryProjects = getProjectsByCategory(categorySlug)
+  const ticket = (
+    <JobTicket
+      jobNumber={categoryProjects.findIndex((p) => p.slug === projectSlug) + 1}
+      jobCount={categoryProjects.length}
+      department={getCategory(categorySlug)?.name ?? categorySlug}
+      client={project.client}
+      agency={project.agency}
+      year={project.year}
+    />
+  )
+
   return (
     <div className="max-w-5xl mx-auto px-6 py-16">
       {/* Project Header - different for image vs video */}
       {isVideo ? (
         // Video Project - per UI_COMPONENTS.md §9
         <>
-          <h1 className="text-center text-balance mb-12">{project.title}</h1>
+          <h1 className="text-center text-balance mb-8">{project.title}</h1>
+          {ticket}
 
           {/* Video Player */}
           <div className="mb-12">
@@ -131,49 +146,25 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       ) : (
         // Image Project - per UI_COMPONENTS.md §8
         <>
-          {/* Title */}
-          <h1 className="text-center text-balance mb-4">{project.title}</h1>
+          <h1 className="text-center text-balance mb-8">{project.title}</h1>
+          {ticket}
 
-          {/* Subtitle/Client - H2 */}
-          {project.client && (
-            <h2 className="text-2xl text-center font-medium mb-3">
-              {project.client}
-            </h2>
-          )}
-
-          {/* Credits/Agency - Paragraph */}
-          {project.agency && (
-            <p className="text-center text-lg mb-12">
-              Agency: {project.agency}
-              {project.year && ` • ${project.year}`}
-            </p>
-          )}
-
-          {/* Image Display - real aspect ratio, capped at 75% of viewport height */}
+          {/* Image - real aspect ratio, capped at 75vh; opens a full-screen zoom view */}
           <div className="mb-12">
-            <div
-              className="relative mx-auto bg-gray-100"
-              style={{
-                aspectRatio: `${imageSize.width} / ${imageSize.height}`,
-                width: `min(100%, calc(75vh * ${imageSize.width / imageSize.height}))`,
-              }}
-            >
-              <Image
-                src={project.thumbnail}
-                alt={project.title}
-                fill
-                className="object-contain"
-                sizes="(max-width: 1024px) 100vw, 976px"
-                priority
-              />
-            </div>
+            <ZoomableImage
+              src={project.thumbnail}
+              alt={project.title}
+              width={imageSize.width}
+              height={imageSize.height}
+            />
           </div>
         </>
       )}
 
       {/* Previous/Next Navigation - per UI_COMPONENTS.md §8-9
           Mobile: back link on its own row above equal-width Prev/Next buttons */}
-      <nav className="grid grid-cols-2 md:flex md:justify-between md:items-center gap-4 border-t border-gray-300 pt-10 mt-16">
+      <div className="scale-rule mt-16 mb-10" aria-hidden="true" />
+      <nav className="grid grid-cols-2 md:flex md:justify-between md:items-center gap-4">
         {/* Back to Category */}
         <Link
           href={`/work/${categorySlug}`}

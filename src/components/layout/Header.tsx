@@ -68,7 +68,7 @@ export default function Header({ categories }: HeaderProps) {
   }
 
   return (
-    <header className="w-full bg-white border-b border-gray-300 relative z-50">
+    <header className="w-full bg-surface border-b border-gray-300 relative z-50">
       <div className="max-w-7xl mx-auto px-4 py-0">
         <div className="flex items-center justify-between">
           {/* Logo - Left aligned */}
@@ -115,7 +115,7 @@ export default function Header({ categories }: HeaderProps) {
 
               {/* Dropdown - display:none when closed (links not focusable or prefetched);
                   transition-discrete + starting: animate it in and out of display:none */}
-              <div className={`absolute top-full left-0 mt-2 bg-white border border-gray-300 shadow-lg min-w-[200px] z-50
+              <div className={`absolute top-full left-0 mt-2 bg-surface border border-gray-300 shadow-lg min-w-[200px] z-50
                                transition-[opacity,translate,display] duration-200 ease-out transition-discrete
                                starting:opacity-0 starting:-translate-y-1
                                ${workDropdownOpen ? 'block opacity-100 translate-y-0' : 'hidden opacity-0 -translate-y-1'}`}>
@@ -171,7 +171,7 @@ export default function Header({ categories }: HeaderProps) {
                 role="dialog"
                 aria-modal="true"
                 aria-label="Menu"
-                className={`fixed inset-y-0 right-0 w-3/4 max-w-sm bg-white z-50 overflow-y-auto shadow-2xl lg:hidden
+                className={`fixed inset-y-0 right-0 w-3/4 max-w-sm bg-surface z-50 overflow-y-auto shadow-2xl lg:hidden
                             transition-[translate,display] duration-300 ease-out transition-discrete starting:translate-x-full
                             ${mobileMenuOpen ? 'block translate-x-0' : 'hidden translate-x-full'}`}
               >
