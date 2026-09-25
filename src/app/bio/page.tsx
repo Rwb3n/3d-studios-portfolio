@@ -175,8 +175,7 @@ export default function BioPage() {
         </Link>
       </div>
 
-      <div className="mt-12">
-        <div className="scale-rule mb-8" aria-hidden="true" />
+      <div className="mt-12 pt-8 border-t border-gray-300">
         <Link
           href="/about"
           className="text-gray-600 hover:text-black transition-colors"

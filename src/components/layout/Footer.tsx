@@ -8,8 +8,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="w-full bg-surface mt-auto intro-footer">
-      <div className="scale-rule" aria-hidden="true" />
+    <footer className="w-full bg-white border-t border-gray-300 mt-auto intro-footer">
       <div className="max-w-7xl mx-auto px-4 py-12 text-center">
         {/* Email CTA - Large and prominent */}
         <div className="mb-8">

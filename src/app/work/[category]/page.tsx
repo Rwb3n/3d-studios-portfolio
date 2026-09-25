@@ -112,8 +112,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
       </div>
 
       {/* Bottom Navigation Filter - per UI_COMPONENTS.md §7 */}
-      <nav>
-        <div className="scale-rule mb-8" aria-hidden="true" />
+      <nav className="border-t border-gray-300 pt-8">
         <div className="flex flex-wrap justify-center gap-x-6 gap-y-3">
           {/* ALL WORK link */}
           <Link

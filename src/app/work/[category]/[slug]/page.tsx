@@ -163,8 +163,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
       {/* Previous/Next Navigation - per UI_COMPONENTS.md §8-9
           Mobile: back link on its own row above equal-width Prev/Next buttons */}
-      <div className="scale-rule mt-16 mb-10" aria-hidden="true" />
-      <nav className="grid grid-cols-2 md:flex md:justify-between md:items-center gap-4">
+      <nav className="grid grid-cols-2 md:flex md:justify-between md:items-center gap-4 border-t border-gray-300 pt-10 mt-16">
         {/* Back to Category */}
         <Link
           href={`/work/${categorySlug}`}
