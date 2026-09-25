@@ -2,8 +2,9 @@
 // Two variants: Image projects (§8) and Video projects (§9)
 
 import Link from 'next/link'
-import Image from 'next/image'
 import VideoPlayer from '@/components/ui/VideoPlayer'
+import JobTicket from '@/components/ui/JobTicket'
+import ZoomableImage from '@/components/ui/ZoomableImage'
 import {
   getCategories,
   getProjectsByCategory,
@@ -11,6 +12,7 @@ import {
   getAdjacentProjects,
   getCategory,
 } from '@/lib/data'
+import { getImageSize } from '@/lib/images'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 
@@ -69,8 +71,6 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
       images: [
         {
           url: imageUrl,
-          width: 1200,
-          height: 630,
           alt: project.title,
         },
       ],
@@ -108,6 +108,20 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   // Determine if this is an image or video project
   const isVideo = project.type === 'video'
+  const imageSize = getImageSize(project.thumbnail) ?? { width: 4, height: 3 }
+
+  // Job ticket: position within the category, like a workshop docket number
+  const categoryProjects = getProjectsByCategory(categorySlug)
+  const ticket = (
+    <JobTicket
+      jobNumber={categoryProjects.findIndex((p) => p.slug === projectSlug) + 1}
+      jobCount={categoryProjects.length}
+      department={getCategory(categorySlug)?.name ?? categorySlug}
+      client={project.client}
+      agency={project.agency}
+      year={project.year}
+    />
+  )
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-16">
@@ -115,7 +129,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       {isVideo ? (
         // Video Project - per UI_COMPONENTS.md §9
         <>
-          <h1 className="text-5xl font-bold text-center mb-12">{project.title}</h1>
+          <h1 className="text-center text-balance mb-8">{project.title}</h1>
+          {ticket}
 
           {/* Video Player */}
           <div className="mb-12">
@@ -131,75 +146,57 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       ) : (
         // Image Project - per UI_COMPONENTS.md §8
         <>
-          {/* Title */}
-          <h1 className="text-5xl font-bold text-center mb-4">{project.title}</h1>
+          <h1 className="text-center text-balance mb-8">{project.title}</h1>
+          {ticket}
 
-          {/* Subtitle/Client - H2 */}
-          {project.client && (
-            <h2 className="text-2xl text-center font-medium mb-3">
-              {project.client}
-            </h2>
-          )}
-
-          {/* Credits/Agency - Paragraph */}
-          {project.agency && (
-            <p className="text-center text-lg mb-12">
-              Agency: {project.agency}
-              {project.year && ` • ${project.year}`}
-            </p>
-          )}
-
-          {/* Image Display - Using thumbnail since detail images don't exist */}
+          {/* Image - real aspect ratio, capped at 75vh; opens a full-screen zoom view */}
           <div className="mb-12">
-            <div className="relative w-full aspect-[4/3] bg-gray-100">
-              <Image
-                src={project.thumbnail}
-                alt={project.title}
-                fill
-                className="object-contain"
-                sizes="(max-width: 1280px) 100vw, 1280px"
-                priority
-              />
-            </div>
+            <ZoomableImage
+              src={project.thumbnail}
+              alt={project.title}
+              width={imageSize.width}
+              height={imageSize.height}
+            />
           </div>
         </>
       )}
 
-      {/* Previous/Next Navigation - per UI_COMPONENTS.md §8-9 */}
-      <nav className="flex justify-between items-center border-t border-gray-300 pt-10 mt-16">
+      {/* Previous/Next Navigation - per UI_COMPONENTS.md §8-9
+          Mobile: back link on its own row above equal-width Prev/Next buttons */}
+      <nav className="grid grid-cols-2 md:flex md:justify-between md:items-center gap-4 border-t border-gray-300 pt-10 mt-16">
+        {/* Back to Category */}
+        <Link
+          href={`/work/${categorySlug}`}
+          className="col-span-2 md:order-2 text-center text-base md:text-lg hover:underline uppercase tracking-wide"
+        >
+          Back to {categorySlug.replace(/-/g, ' ')}
+        </Link>
+
         {/* Previous Button */}
         {prev ? (
           <Link
             href={`/work/${categorySlug}/${prev.slug}`}
-            className="px-4 md:px-8 py-3 bg-black text-white hover:bg-gray-800 transition-all duration-150 hover:scale-105 transform font-medium"
+            className="md:order-1 text-center px-4 md:px-8 py-3 bg-black text-white hover:bg-gray-800 transition-all duration-150 hover:scale-105 transform font-medium"
           >
-            ← <span className="hidden md:inline">Previous</span>
+            ← Previous
           </Link>
         ) : (
-          <div className="px-4 md:px-8 py-3 bg-gray-300 text-gray-500 cursor-not-allowed font-medium">
-            ← <span className="hidden md:inline">Previous</span>
+          <div className="md:order-1 text-center px-4 md:px-8 py-3 bg-gray-300 text-gray-500 cursor-not-allowed font-medium" aria-disabled="true">
+            ← Previous
           </div>
         )}
-
-        {/* Back to Category */}
-        <Link
-          href={`/work/${categorySlug}`}
-          className="text-lg hover:underline uppercase tracking-wide"
-        >
-          Back to {categorySlug.replace(/-/g, ' ')}
-        </Link>
 
         {/* Next Button */}
         {next ? (
           <Link
             href={`/work/${categorySlug}/${next.slug}`}
-            className="px-4 md:px-8 py-3 bg-black text-white hover:bg-gray-800 transition-all duration-150 hover:scale-105 transform font-medium"
+            className="md:order-3 text-center px-4 md:px-8 py-3 bg-black text-white hover:bg-gray-800 transition-all duration-150 hover:scale-105 transform font-medium"
           >
-            <span className="hidden md:inline">Next</span> →
+            Next →
           </Link>
         ) : (
-          <div className="px-4 md:px-8 py-3 bg-gray-300 text-gray-500 cursor-not-allowed font-medium">
-            <span className="hidden md:inline">Next</span> →
+          <div className="md:order-3 text-center px-4 md:px-8 py-3 bg-gray-300 text-gray-500 cursor-not-allowed font-medium" aria-disabled="true">
+            Next →
           </div>
         )}
       </nav>

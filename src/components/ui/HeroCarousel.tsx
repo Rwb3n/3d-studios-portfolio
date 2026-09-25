@@ -1,17 +1,49 @@
-'use client'
-
 // Infinite Horizontal Scroll - Featured Work Showcase
 // Continuously scrolls featured project images horizontally (marquee/ticker style)
-// Pauses on hover, clickable images, responsive design
-// Homepage intro: Reveals from bottom with clip-path animation (1.4s delay)
+// Pure CSS animation: pauses on hover, stops under prefers-reduced-motion
+// Homepage intro: reveals from bottom on first visit (see intro script in layout.tsx)
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useRef, useState } from 'react'
 import type { ProjectWithCategory } from '@/types'
 
 interface HeroCarouselProps {
   projects: ProjectWithCategory[]
+}
+
+const SLIDE_SIZES =
+  '(max-width: 640px) 85vw, (max-width: 768px) 70vw, (max-width: 1024px) 60vw, (max-width: 1280px) 55vw, 50vw'
+
+function ProjectList({
+  projects,
+  duplicate = false,
+}: {
+  projects: ProjectWithCategory[]
+  duplicate?: boolean
+}) {
+  return (
+    <div className="flex flex-shrink-0" aria-hidden={duplicate || undefined}>
+      {projects.map((project, index) => (
+        <Link
+          key={project.id}
+          href={`/work/${project.categorySlug}/${project.slug}`}
+          tabIndex={duplicate ? -1 : undefined}
+          className="relative flex-shrink-0 w-[85vw] sm:w-[70vw] md:w-[60vw] lg:w-[55vw] xl:w-[50vw] h-full group"
+        >
+          <Image
+            src={project.thumbnail}
+            alt={duplicate ? '' : project.title}
+            fill
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            priority={!duplicate && index < 2}
+            sizes={SLIDE_SIZES}
+          />
+          {/* Subtle hover overlay */}
+          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+        </Link>
+      ))}
+    </div>
+  )
 }
 
 export default function HeroCarousel({ projects }: HeroCarouselProps) {
@@ -19,102 +51,16 @@ export default function HeroCarousel({ projects }: HeroCarouselProps) {
     return null
   }
 
-  const [isPaused, setIsPaused] = useState(false)
-  const [hasAnimated, setHasAnimated] = useState(true) // Default to no animation (for SSR)
-  const containerRef = useRef<HTMLDivElement>(null)
-  const scrollPositionRef = useRef(0)
-  const animationRef = useRef<number | null>(null)
-
-  // Check if intro animation should play (once per session)
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const animated = sessionStorage.getItem('homepage-animated')
-      if (!animated) {
-        sessionStorage.setItem('homepage-animated', 'true')
-        setHasAnimated(false) // Will animate
-      }
-    }
-  }, [])
-
-  useEffect(() => {
-    const container = containerRef.current
-    if (!container) return
-
-    const animate = () => {
-      if (!isPaused && container.firstElementChild) {
-        // Move 0.5 pixels per frame (smooth continuous scroll, ~13s cycle)
-        scrollPositionRef.current += 0.5
-
-        // Get the width of the first list (half of total since we duplicate)
-        const firstChild = container.firstElementChild as HTMLElement
-        const scrollWidth = firstChild.scrollWidth
-
-        // Reset position when we've scrolled past one full list width
-        if (scrollPositionRef.current >= scrollWidth) {
-          scrollPositionRef.current = 0
-        }
-
-        // Apply transform
-        container.style.transform = `translateX(-${scrollPositionRef.current}px)`
-      }
-
-      animationRef.current = requestAnimationFrame(animate)
-    }
-
-    animationRef.current = requestAnimationFrame(animate)
-
-    return () => {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current)
-      }
-    }
-  }, [isPaused])
-
-  // Render project list component
-  const ProjectList = () => (
-    <>
-      {projects.map((project, index) => (
-        <Link
-          key={`${project.id}-${index}`}
-          href={`/work/${project.categorySlug}/${project.slug}`}
-          className="relative flex-shrink-0 w-[85vw] sm:w-[70vw] md:w-[60vw] lg:w-[55vw] xl:w-[50vw] h-full group"
-        >
-          <Image
-            src={project.thumbnail}
-            alt={project.title}
-            fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
-            priority={index < 4}
-            loading={index < 4 ? undefined : 'lazy'}
-            sizes="(max-width: 640px) 85vw, (max-width: 768px) 70vw, (max-width: 1024px) 60vw, (max-width: 1280px) 55vw, 50vw"
-          />
-          {/* Subtle hover overlay */}
-          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
-        </Link>
-      ))}
-    </>
-  )
-
   return (
-    <div className={`relative w-full bg-gray-900 overflow-hidden ${!hasAnimated ? 'animate-carousel-reveal' : ''}`}>
-      {/* Infinite Scroll Container */}
+    <div className="intro-carousel relative w-full bg-gray-900 overflow-hidden">
       <div className="relative w-full aspect-[16/9] md:aspect-[24/9] lg:aspect-[30/9]">
-        {/* Scrolling Images - Two identical lists for seamless loop */}
+        {/* Two identical lists; the track moves by exactly one list width (-50%) per cycle */}
         <div
-          ref={containerRef}
-          className="absolute inset-0 flex will-change-transform"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-          style={{ transition: 'none' }}
+          className="marquee-track absolute inset-y-0 left-0 flex w-max"
+          style={{ animationDuration: `${projects.length * 20}s` }}
         >
-          {/* First list */}
-          <div className="flex flex-shrink-0">
-            <ProjectList />
-          </div>
-          {/* Duplicate list for seamless loop (hidden from screen readers) */}
-          <div className="flex flex-shrink-0" aria-hidden="true">
-            <ProjectList />
-          </div>
+          <ProjectList projects={projects} />
+          <ProjectList projects={projects} duplicate />
         </div>
       </div>
     </div>

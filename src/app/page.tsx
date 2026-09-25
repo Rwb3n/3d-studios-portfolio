@@ -18,8 +18,6 @@ export const metadata: Metadata = {
     images: [
       {
         url: 'https://3d-studios.co.uk/images/food-scenics/taj-mahal/thumbnail.jpg',
-        width: 1200,
-        height: 630,
         alt: '3D Studios - Professional Modelmaking Portfolio',
       },
     ],
