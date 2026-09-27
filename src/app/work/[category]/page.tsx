@@ -44,8 +44,6 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
       images: [
         {
           url: imageUrl,
-          width: 1200,
-          height: 630,
           alt: `${category.name} Portfolio - 3D Studios`,
         },
       ],
@@ -83,7 +81,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   return (
     <div className="max-w-7xl mx-auto px-6 py-16">
       {/* Category Title */}
-      <h1 className="text-5xl font-bold text-center mb-16 uppercase tracking-wide">{category.name}</h1>
+      <h1 className="text-center text-balance mb-16 uppercase tracking-wide">{category.name}</h1>
 
       {/* Portfolio Grid - per UI_COMPONENTS.md §6 */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
@@ -91,7 +89,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           <Link
             key={project.id}
             href={`/work/${categorySlug}/${project.slug}`}
-            className="group"
+            className="group reveal"
           >
             {/* Project Image (4:3 aspect ratio) */}
             <div className="relative w-full aspect-[4/3] bg-gray-200 overflow-hidden mb-3">
@@ -99,14 +97,14 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                 src={project.thumbnail}
                 alt={project.title}
                 fill
-                className="object-cover group-hover:scale-105 transition-transform duration-300"
+                className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 loading="lazy"
               />
             </div>
 
             {/* Project Title - Below image, centered, H3 */}
-            <h3 className="text-center text-lg font-medium group-hover:text-gray-600 transition-colors">
+            <h3 className="text-center text-lg font-medium transition-colors duration-300 group-hover:text-gray-500">
               {project.title}
             </h3>
           </Link>

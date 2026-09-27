@@ -5,29 +5,39 @@
 'use client'
 
 import Link from 'next/link'
-import { useState, useEffect } from 'react'
-import { usePathname } from 'next/navigation'
+import { useState, useEffect, useRef } from 'react'
 import Logo from './Logo'
-import { getCategories } from '@/lib/data'
+import type { Category } from '@/types'
 
-export default function Header() {
+interface HeaderProps {
+  categories: Pick<Category, 'id' | 'name' | 'slug'>[]
+}
+
+export default function Header({ categories }: HeaderProps) {
   const [workDropdownOpen, setWorkDropdownOpen] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [mobileWorkExpanded, setMobileWorkExpanded] = useState(false)
-  const [hasAnimated, setHasAnimated] = useState(true) // Default to no animation
-  const pathname = usePathname()
-  const categories = getCategories()
-  const isHomepage = pathname === '/'
+  const workDropdownRef = useRef<HTMLDivElement>(null)
 
-  // Check if intro animation should play (homepage only, once per session)
+  // Close WORK dropdown on outside click or Escape
   useEffect(() => {
-    if (isHomepage && typeof window !== 'undefined') {
-      const animated = sessionStorage.getItem('homepage-animated')
-      if (!animated) {
-        setHasAnimated(false) // Will animate
+    if (!workDropdownOpen) return
+
+    const handleClick = (e: MouseEvent) => {
+      if (!workDropdownRef.current?.contains(e.target as Node)) {
+        setWorkDropdownOpen(false)
       }
     }
-  }, [isHomepage])
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setWorkDropdownOpen(false)
+    }
+    document.addEventListener('mousedown', handleClick)
+    document.addEventListener('keydown', handleEscape)
+    return () => {
+      document.removeEventListener('mousedown', handleClick)
+      document.removeEventListener('keydown', handleEscape)
+    }
+  }, [workDropdownOpen])
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
@@ -62,7 +72,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 py-0">
         <div className="flex items-center justify-between">
           {/* Logo - Left aligned */}
-          <div className={isHomepage && !hasAnimated ? 'animate-logo-in' : ''}>
+          <div className="intro-logo">
             <Link href="/">
               <Logo width={240} height={166} />
             </Link>
@@ -90,24 +100,28 @@ export default function Header() {
           </button>
 
           {/* Desktop Navigation - Hidden on mobile (< 1024px) */}
-          <nav className={`hidden lg:flex items-center gap-8 ${isHomepage && !hasAnimated ? 'animate-nav-in' : ''}`}>
+          <nav className="hidden lg:flex items-center gap-8 intro-nav">
             {/* WORK Dropdown */}
-            <div className="relative">
+            <div className="relative" ref={workDropdownRef}>
               <button
                 onClick={() => setWorkDropdownOpen(!workDropdownOpen)}
-                className="text-black hover:text-gray-600 font-medium flex items-center gap-1"
+                aria-expanded={workDropdownOpen}
+                aria-haspopup="true"
+                className="text-black font-medium flex items-center gap-1 relative after:absolute after:left-0 after:-bottom-1 after:h-px after:w-full after:bg-current after:origin-left after:scale-x-0 after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100"
               >
                 WORK
-                <span className="text-xs">▼</span>
+                <span className={`text-xs transition-transform duration-300 ${workDropdownOpen ? 'rotate-180' : ''}`}>▼</span>
               </button>
 
-              {/* Dropdown with fade transition */}
+              {/* Dropdown - display:none when closed (links not focusable or prefetched);
+                  transition-discrete + starting: animate it in and out of display:none */}
               <div className={`absolute top-full left-0 mt-2 bg-white border border-gray-300 shadow-lg min-w-[200px] z-50
-                               transition-opacity duration-200
-                               ${workDropdownOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+                               transition-[opacity,translate,display] duration-200 ease-out transition-discrete
+                               starting:opacity-0 starting:-translate-y-1
+                               ${workDropdownOpen ? 'block opacity-100 translate-y-0' : 'hidden opacity-0 -translate-y-1'}`}>
                   <Link
                     href="/work"
-                    className="block px-4 py-2 hover:bg-gray-100 text-sm uppercase"
+                    className="block px-4 py-2 hover:bg-gray-100 transition-colors text-sm uppercase"
                     onClick={() => setWorkDropdownOpen(false)}
                   >
                     All Work
@@ -116,7 +130,7 @@ export default function Header() {
                     <Link
                       key={cat.id}
                       href={`/work/${cat.slug}`}
-                      className="block px-4 py-2 hover:bg-gray-100 text-sm uppercase"
+                      className="block px-4 py-2 hover:bg-gray-100 transition-colors text-sm uppercase"
                       onClick={() => setWorkDropdownOpen(false)}
                     >
                       {cat.name}
@@ -127,31 +141,40 @@ export default function Header() {
 
             <Link
               href="/about"
-              className="text-black hover:text-gray-600 font-medium uppercase"
+              className="text-black font-medium uppercase relative after:absolute after:left-0 after:-bottom-1 after:h-px after:w-full after:bg-current after:origin-left after:scale-x-0 after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100"
             >
               About
             </Link>
 
             <a
               href="mailto:paul@3d-studios.co.uk"
-              className="text-black hover:text-gray-600 font-medium uppercase"
+              className="text-black font-medium uppercase relative after:absolute after:left-0 after:-bottom-1 after:h-px after:w-full after:bg-current after:origin-left after:scale-x-0 after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100"
             >
               Contact
             </a>
           </nav>
 
-          {/* Mobile Menu - Slide-in drawer from right */}
-          {mobileMenuOpen && (
-            <>
+          {/* Mobile Menu - Slide-in drawer from right. Always rendered; display:none
+              when closed, animated in and out via transition-discrete + starting: */}
+          <>
               {/* Backdrop */}
               <div
-                className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+                className={`fixed inset-0 bg-black/50 z-40 lg:hidden
+                            transition-[opacity,display] duration-300 transition-discrete starting:opacity-0
+                            ${mobileMenuOpen ? 'block opacity-100' : 'hidden opacity-0'}`}
                 onClick={closeMobileMenu}
                 aria-hidden="true"
               />
 
               {/* Drawer */}
-              <div className="fixed inset-y-0 right-0 w-3/4 max-w-sm bg-white z-50 overflow-y-auto shadow-2xl lg:hidden">
+              <div
+                role="dialog"
+                aria-modal="true"
+                aria-label="Menu"
+                className={`fixed inset-y-0 right-0 w-3/4 max-w-sm bg-white z-50 overflow-y-auto shadow-2xl lg:hidden
+                            transition-[translate,display] duration-300 ease-out transition-discrete starting:translate-x-full
+                            ${mobileMenuOpen ? 'block translate-x-0' : 'hidden translate-x-full'}`}
+              >
                 {/* Header with Close Button */}
                 <div className="flex items-center justify-between p-4 border-b border-gray-300">
                   <span className="text-lg font-bold">MENU</span>
@@ -182,6 +205,7 @@ export default function Header() {
                   <div className="border-b border-gray-200">
                     <button
                       onClick={() => setMobileWorkExpanded(!mobileWorkExpanded)}
+                      aria-expanded={mobileWorkExpanded}
                       className="w-full flex items-center justify-between px-6 py-4 text-left font-medium uppercase hover:bg-gray-50 transition-colors min-h-[44px]"
                     >
                       WORK
@@ -202,9 +226,14 @@ export default function Header() {
                       </svg>
                     </button>
 
-                    {/* WORK Submenu */}
-                    {mobileWorkExpanded && (
-                      <div className="bg-gray-50">
+                    {/* WORK Submenu - animated height via grid rows; inert while collapsed */}
+                    <div
+                      className={`grid transition-[grid-template-rows] duration-300 ease-out ${
+                        mobileWorkExpanded ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+                      }`}
+                      inert={!mobileWorkExpanded}
+                    >
+                      <div className="overflow-hidden bg-gray-50">
                         <Link
                           href="/work"
                           className="block px-8 py-3 text-sm uppercase hover:bg-gray-100 transition-colors min-h-[44px] flex items-center"
@@ -223,7 +252,7 @@ export default function Header() {
                           </Link>
                         ))}
                       </div>
-                    )}
+                    </div>
                   </div>
 
                   {/* ABOUT Link */}
@@ -245,8 +274,7 @@ export default function Header() {
                   </a>
                 </nav>
               </div>
-            </>
-          )}
+          </>
         </div>
       </div>
     </header>

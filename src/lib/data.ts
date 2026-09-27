@@ -1,5 +1,9 @@
 // Data fetching utilities for 3D Studios portfolio
 
+// Server-only: reads the filesystem to drop projects whose image is missing
+
+import fs from 'node:fs'
+import path from 'node:path'
 import type { Category, Project, ProjectWithCategory } from '@/types'
 import categoriesData from '@/data/categories.json'
 
@@ -15,8 +19,20 @@ import windowDisplaysData from '@/data/projects/window-displays.json'
 // Type assertion for JSON imports
 const categories = (categoriesData as { categories: Category[] }).categories
 
+// Projects whose thumbnail file is not in /public are hidden (and warned about
+// at build time) so a missing asset never renders as a broken tile
+function withExistingThumbnails(projects: Project[]): Project[] {
+  return projects.filter((project) => {
+    const exists = fs.existsSync(path.join(process.cwd(), 'public', project.thumbnail))
+    if (!exists) {
+      console.warn(`[data] Hiding "${project.slug}": missing ${project.thumbnail}`)
+    }
+    return exists
+  })
+}
+
 // Map of category slugs to their project data
-const projectsByCategory: Record<string, Project[]> = {
+const rawProjectsByCategory: Record<string, Project[]> = {
   'art-projects': (artProjectsData as { projects: Project[] }).projects,
   'food-scenics': (foodScenesData as { projects: Project[] }).projects,
   'model-food': (modelFoodData as { projects: Project[] }).projects,
@@ -25,6 +41,10 @@ const projectsByCategory: Record<string, Project[]> = {
   'still-life': (stillLifeData as { projects: Project[] }).projects,
   'window-displays': (windowDisplaysData as { projects: Project[] }).projects,
 }
+
+const projectsByCategory: Record<string, Project[]> = Object.fromEntries(
+  Object.entries(rawProjectsByCategory).map(([slug, projects]) => [slug, withExistingThumbnails(projects)])
+)
 
 /**
  * Get all categories, optionally sorted by order

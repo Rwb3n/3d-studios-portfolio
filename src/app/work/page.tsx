@@ -18,8 +18,6 @@ export const metadata: Metadata = {
     images: [
       {
         url: 'https://3d-studios.co.uk/images/model-food/alpro/thumbnail.jpg',
-        width: 1200,
-        height: 630,
         alt: '3D Studios Portfolio - Modelmaking Projects',
       },
     ],
@@ -41,35 +39,45 @@ export default function WorkPage() {
     <div className="max-w-7xl mx-auto px-6 py-16">
       {/* Category Grid - per UI_COMPONENTS.md §5 */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {categories.map((category) => (
-          <Link
-            key={category.id}
-            href={`/work/${category.slug}`}
-            className="group relative overflow-hidden"
-          >
-            {/* Category Image (4:3 aspect ratio) with overlay text */}
-            <div className="relative w-full aspect-[4/3] bg-gray-300 overflow-hidden">
-              <Image
-                src={category.thumbnail}
-                alt={category.name}
-                fill
-                className="object-cover transition-transform duration-300 group-hover:scale-105"
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                loading="lazy"
-              />
+        {categories.map((category, index) => {
+          // Odd count: first tile spans both columns so the grid has no orphan
+          const isWide = index === 0 && categories.length % 2 === 1
+          return (
+            <Link
+              key={category.id}
+              href={`/work/${category.slug}`}
+              className={`group reveal relative overflow-hidden ${isWide ? 'md:col-span-2' : ''}`}
+            >
+              {/* Category Image (4:3, or wide banner for the spanning tile) with overlay text */}
+              <div className={`relative w-full aspect-[4/3] bg-gray-300 overflow-hidden ${isWide ? 'md:aspect-[21/9]' : ''}`}>
+                <Image
+                  src={category.thumbnail}
+                  alt={category.name}
+                  fill
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                  sizes={isWide ? '(max-width: 1280px) 100vw, 1232px' : '(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 600px'}
+                  priority={index === 0}
+                />
 
-              {/* Semi-transparent overlay (always visible, darkens on hover) */}
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300 z-10" />
+                {/* Bottom gradient keeps the label legible without dulling the whole image */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-100" />
 
-              {/* Category name overlay with white pill background */}
-              <div className="absolute inset-0 flex items-center justify-center z-20">
-                <h2 className="text-black text-2xl md:text-3xl font-bold text-center px-8 py-4 bg-white/90 rounded-lg shadow-lg uppercase tracking-wide">
-                  {category.name}
-                </h2>
+                {/* Category label - bottom left, arrow slides in on hover */}
+                <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-5 md:p-7 text-white">
+                  <h2 className="text-xl md:text-2xl font-normal uppercase tracking-[0.15em] leading-tight">
+                    {category.name}
+                  </h2>
+                  <span
+                    aria-hidden="true"
+                    className="text-xl md:text-2xl font-light opacity-0 -translate-x-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0"
+                  >
+                    →
+                  </span>
+                </div>
               </div>
-            </div>
-          </Link>
-        ))}
+            </Link>
+          )
+        })}
       </div>
     </div>
   )

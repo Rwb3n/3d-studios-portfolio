@@ -38,7 +38,12 @@ export default function VideoPlayer({ src, poster, title }: VideoPlayerProps) {
     video.addEventListener('canplay', handleCanPlay)
     video.addEventListener('playing', handlePlaying)
 
+    // Keep fullscreen state in sync when the user exits with Esc
+    const handleFullscreenChange = () => setIsFullscreen(document.fullscreenElement === video)
+    document.addEventListener('fullscreenchange', handleFullscreenChange)
+
     return () => {
+      document.removeEventListener('fullscreenchange', handleFullscreenChange)
       video.removeEventListener('timeupdate', updateTime)
       video.removeEventListener('loadedmetadata', updateDuration)
       video.removeEventListener('waiting', handleWaiting)
@@ -51,12 +56,12 @@ export default function VideoPlayer({ src, poster, title }: VideoPlayerProps) {
     const video = videoRef.current
     if (!video) return
 
-    if (isPlaying) {
-      video.pause()
+    // isPlaying is updated by the onPlay/onPause handlers
+    if (video.paused) {
+      video.play().catch(() => {})
     } else {
-      video.play()
+      video.pause()
     }
-    setIsPlaying(!isPlaying)
   }
 
   const toggleMute = () => {
@@ -64,7 +69,7 @@ export default function VideoPlayer({ src, poster, title }: VideoPlayerProps) {
     if (!video) return
 
     video.muted = !video.muted
-    setIsMuted(!video.muted)
+    setIsMuted(video.muted)
   }
 
   const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -81,15 +86,10 @@ export default function VideoPlayer({ src, poster, title }: VideoPlayerProps) {
     if (!video) return
 
     if (!isFullscreen) {
-      if (video.requestFullscreen) {
-        video.requestFullscreen()
-      }
+      video.requestFullscreen?.()
     } else {
-      if (document.exitFullscreen) {
-        document.exitFullscreen()
-      }
+      document.exitFullscreen?.()
     }
-    setIsFullscreen(!isFullscreen)
   }
 
   const formatTime = (seconds: number) => {
@@ -106,6 +106,9 @@ export default function VideoPlayer({ src, poster, title }: VideoPlayerProps) {
         ref={videoRef}
         src={src}
         poster={poster}
+        preload="metadata"
+        playsInline
+        aria-label={title}
         className="w-full h-full"
         onClick={togglePlay}
         onPlay={() => setIsPlaying(true)}
